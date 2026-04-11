@@ -1,0 +1,4 @@
+This is a tiny sample document for the minimal RAG pipeline.
+It explains that you can add more .txt files under the data folder.
+The ingest command chunks text, embeds it with MiniLM, and stores vectors in Qdrant.
+The query command retrieves the closest chunks by cosine similarity.
