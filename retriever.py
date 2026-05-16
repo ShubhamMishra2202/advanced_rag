@@ -1,6 +1,5 @@
 """Embed query and search Qdrant."""
 from qdrant_client import QdrantClient
-
 from embed import encode
 from ingestion import COLLECTION
 
@@ -14,14 +13,13 @@ def search(query: str, *, top_k: int = 5) -> list[dict]:
         limit=top_k,
         with_payload=True,
     ).points
-    out = []
-    for h in hits:
-        p = h.payload or {}
-        out.append(
-            {
-                "score": h.score,
-                "text": p.get("text", ""),
-                "source": p.get("source", ""),
-            }
-        )
-    return out
+    return [
+        {
+            "score": h.score,
+            "text": (h.payload or {}).get("text", ""),
+            "doc": (h.payload or {}).get("doc", ""),
+            "page": (h.payload or {}).get("page"),
+            "paragraph": (h.payload or {}).get("paragraph"),
+        }
+        for h in hits
+    ]
