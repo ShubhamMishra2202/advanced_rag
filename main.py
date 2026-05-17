@@ -1,8 +1,7 @@
 from pathlib import Path
 from ingestion import ingest
 from retriever import search
-from llm import format_context
-from eval.recall_utils import judge_evidence_recall
+from llm import format_context, judge_evidence_recall, judge_retrieval_precision
 
 PDF = Path(__file__).resolve().parent / "data" / "attention_is_all_you_need-1.pdf"
 MODE = "query"  # "ingest" | "query"
@@ -24,9 +23,11 @@ if __name__ == "__main__":
 
             if GROUND_TRUTH:
                 chunks = [h["text"] for h in hits]
-                verdict = judge_evidence_recall(QUESTION, ground_truth=GROUND_TRUTH, retrieved_chunks=chunks)
+                recall = judge_evidence_recall(QUESTION, ground_truth=GROUND_TRUTH, retrieved_chunks=chunks)
+                precision = judge_retrieval_precision(QUESTION, retrieved_chunks=chunks)
                 print("--- LLM eval ---")
-                print(f"recall : {verdict['recall']}")
-                print(f"reason : {verdict['reason']}")
+                print(f"recall    : {recall['recall']}")
+                print(f"reason    : {recall['reason']}")
+                print(f"precision : {precision['precision']:.2f} ({precision['relevant_count']}/{precision['total_count']} chunks relevant)")
             else:
                 print("--- LLM eval skipped (set GROUND_TRUTH to enable) ---")
