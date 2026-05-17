@@ -4,10 +4,10 @@ from retriever import search
 from llm import format_context, judge_evidence_recall, judge_retrieval_precision
 from eval.metrics import reciprocal_rank
 
-PDF = Path(__file__).resolve().parent / "data" / "attention_is_all_you_need-1.pdf"
+PDF = Path(__file__).resolve().parent / "data" / "Medical_document_advance_rag.pdf"
 MODE = "query"  # "ingest" | "query"
-QUESTION = "How does the Transformer's computational cost compare to a restricted self-attention variant for very long sequences?"
-GROUND_TRUTH = "Restricted self-attention (neighborhood size r) reduces complexity to O(r·n·d) per layer and O(1) sequential ops, but increases max path length to O(n/r). Standard self-attention costs O(n²·d) — the square term becomes expensive for very long sequences, motivating the restricted variant as future work"  # set to "" to skip LLM eval
+QUESTION = "What are the five core parameters used in the NCD costing tool to estimate scale-up costs, and how do they interact?"
+GROUND_TRUTH = "The five parameters are: (1) population of the country/region, (2) prevalence/incidence of the disease or risk factor, (3) coverage — proportion of population in need receiving the intervention, (4) resource quantities needed to implement the intervention (human resources, medicines, equipment), and (5) prices or unit costs for each resource item. Population times prevalence defines the population at risk/in need; resource use times price provides cost per case; and coverage is the main mechanism by which scale-up takes place over time"  # set to "" to skip LLM eval
 
 if __name__ == "__main__":
     if MODE == "ingest":
