@@ -1,4 +1,5 @@
 venv/
+.venv/
 qdrant_storage/
 __pycache__/
 *.pyc
@@ -10,3 +11,9 @@ __pycache__/
 *.pyzw
 *.pyz
 .env
+
+# data
+data/*.pdf
+
+# scratch
+eval/Untitled
