@@ -354,7 +354,6 @@
     "query": "How does the Transformer's computational cost compare to a restricted self-attention variant for very long sequences?",
     "doc": "attention_is_all_you_need.pdf",
     "page": 7,
-    "paragraph": 1,
     "section": "Section 4 — Why Self-Attention / Table 1",
     "ground_truth": "Restricted self-attention (neighborhood size r) reduces complexity to O(r·n·d) per layer and O(1) sequential ops, but increases max path length to O(n/r). Standard self-attention costs O(n²·d) — the square term becomes expensive for very long sequences, motivating the restricted variant as future work.",
     "hint": "Table 1 row 'Self-Attention (restricted)' and Section 4 paragraph on restricted self-attention."

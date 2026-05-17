@@ -2,6 +2,7 @@ from pathlib import Path
 from ingestion import ingest
 from retriever import search
 from llm import format_context, judge_evidence_recall, judge_retrieval_precision
+from eval.metrics import reciprocal_rank
 
 PDF = Path(__file__).resolve().parent / "data" / "attention_is_all_you_need-1.pdf"
 MODE = "query"  # "ingest" | "query"
@@ -29,5 +30,6 @@ if __name__ == "__main__":
                 print(f"recall    : {recall['recall']}")
                 print(f"reason    : {recall['reason']}")
                 print(f"precision : {precision['precision']:.2f} ({precision['relevant_count']}/{precision['total_count']} chunks relevant)")
+                print(f"MRR       : {reciprocal_rank(precision['judgments']):.4f}")
             else:
                 print("--- LLM eval skipped (set GROUND_TRUTH to enable) ---")

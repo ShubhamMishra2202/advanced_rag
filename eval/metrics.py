@@ -44,6 +44,29 @@ def aggregate_precision_results(results: list[dict[str, Any]]) -> dict[str, Any]
 
 
 # ---------------------------------------------------------------------------
+# MRR — derived from precision judgments, no extra LLM call
+# ---------------------------------------------------------------------------
+
+def reciprocal_rank(judgments: list[dict[str, Any]]) -> float:
+    """RR for a single query: 1/rank of the first relevant chunk, or 0.0.
+
+    Expects the ``judgments`` list from ``judge_retrieval_precision``,
+    each entry having ``index`` (1-based) and ``relevant`` fields.
+    """
+    for j in sorted(judgments, key=lambda x: x.get("index", 0)):
+        if j.get("relevant", False):
+            return 1.0 / j["index"]
+    return 0.0
+
+
+def mean_reciprocal_rank(rr_scores: list[float]) -> float:
+    """MRR over a collection of per-query reciprocal rank scores."""
+    if not rr_scores:
+        return 0.0
+    return sum(rr_scores) / len(rr_scores)
+
+
+# ---------------------------------------------------------------------------
 # Similarity-based metrics
 # ---------------------------------------------------------------------------
 
