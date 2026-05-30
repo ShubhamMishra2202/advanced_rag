@@ -1,12 +1,15 @@
 from __future__ import annotations
 
 import json
+import logging
 import os
 from pathlib import Path
 from typing import Any
 
 from dotenv import load_dotenv
 from openai import OpenAI
+
+log = logging.getLogger(__name__)
 
 DEFAULT_MODEL = "gpt-4o-mini"
 _ROOT = Path(__file__).resolve().parent
@@ -27,6 +30,7 @@ def get_openai_client(*, project_root: Path | None = None) -> OpenAI:
     key = os.environ.get("OPENAI_API_KEY", "").strip()
     if not key:
         raise RuntimeError("OPENAI_API_KEY is missing or empty. Set it in .env or the environment.")
+    log.debug("OpenAI client created (model default: %s)", DEFAULT_MODEL)
     return OpenAI(api_key=key)
 
 
@@ -78,6 +82,7 @@ def judge_evidence_recall(
         f"Retrieved passages:\n{chunks_block}\n\n"
         'Return JSON: {"recall": <true|false>, "reason": "<brief>"}'
     )
+    log.info("LLM recall judge | model=%s | chunks=%d", model, len(retrieved_chunks))
     resp = own_client.chat.completions.create(
         model=model,
         temperature=0,
@@ -88,12 +93,15 @@ def judge_evidence_recall(
     try:
         out = json.loads(raw)
     except json.JSONDecodeError:
+        log.error("Recall judge returned invalid JSON: %s", raw[:200])
         return {"recall": False, "reason": f"Invalid JSON from model: {raw[:200]}"}
 
-    return {
+    result = {
         "recall": bool(out.get("recall", False)),
         "reason": str(out.get("reason", "")).strip() or "(no reason)",
     }
+    log.info("Recall result | recall=%s | reason: %s", result["recall"], result["reason"])
+    return result
 
 
 # ---------------------------------------------------------------------------
@@ -134,6 +142,7 @@ def judge_retrieval_precision(
         "For each passage return an entry in a JSON array:\n"
         '{"judgments": [{"index": <int>, "relevant": <true|false>, "reason": "<brief>"}]}'
     )
+    log.info("LLM precision judge | model=%s | chunks=%d", model, len(chunks))
     resp = own_client.chat.completions.create(
         model=model,
         temperature=0,
@@ -144,14 +153,22 @@ def judge_retrieval_precision(
     try:
         out = json.loads(raw)
     except json.JSONDecodeError:
+        log.error("Precision judge returned invalid JSON: %s", raw[:200])
         return {"precision": 0.0, "relevant_count": 0, "total_count": len(chunks), "judgments": []}
 
     judgments = out.get("judgments", [])
     relevant_count = sum(1 for j in judgments if j.get("relevant", False))
     total_count = len(chunks)
-    return {
+    result = {
         "precision": relevant_count / total_count if total_count else 0.0,
         "relevant_count": relevant_count,
         "total_count": total_count,
         "judgments": judgments,
     }
+    log.info(
+        "Precision result | precision=%.2f | %d/%d relevant",
+        result["precision"], relevant_count, total_count,
+    )
+    for j in judgments:
+        log.debug("  chunk[%d] relevant=%s | %s", j.get("index"), j.get("relevant"), j.get("reason", ""))
+    return result
