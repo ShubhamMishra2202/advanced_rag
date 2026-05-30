@@ -9,4 +9,5 @@ dependencies = [
     "pdfplumber>=0.11.0",
     "openai>=1.0.0",
     "python-dotenv>=1.0.0",
+    "mlflow>=3.12.0",
 ]

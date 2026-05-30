@@ -598,5 +598,17 @@
     "section": "Recommendations and evidence — B. Glycaemic control",
     "ground_truth": "Studies comparing intensive versus less intensive glycaemic control showed no glycaemic control threshold effect for complications. However, patients achieving HbA1c values of 7% or below had significantly lower risk of microvascular complications than less intensively treated patients with higher mean HbA1c (7.9-9.4%). An HbA1c of approximately 7% corresponds to fasting plasma glucose of approximately 6.5 mmol/l. The ADVANCE trial found major microvascular outcomes (new or worsening retinopathy or nephropathy) reduced by 14% in the intensive group. The UKPDS found 25% relative risk reduction in aggregate microvascular endpoints.",
     "hint": "Paragraph spanning the DCCT, ADVANCE, VADT and UKPDS evidence discussion on pages 99-101."
+  },
+  {
+    "id": 51,
+    "category": "multi-protocol",
+    "difficulty": "hard",
+    "query": "A 45-year-old heavy smoker presents at a primary care clinic with persistent cough, worsening breathlessness, a blood pressure reading of 165/100 mmHg, and fasting blood glucose of 7.2 mmol/L. He also reports he cannot stop smoking. According to WHO PEN, what combination of protocols applies to this patient, what diagnostic steps should be taken to distinguish his respiratory condition, what cardiovascular risk threshold determines whether he needs drug treatment, and what is the step-by-step approach to help him quit tobacco?",
+    "doc": "Medical_document_advance_rag.pdf",
+    "page": 20,
+    "paragraph": 2,
+    "section": "Multi-protocol — Protocol 1 + Protocol 2 + Protocol 3",
+    "ground_truth": "This patient requires three WHO PEN protocols: Protocol 1 (CVD/diabetes/hypertension), Protocol 2 (lifestyle counselling and tobacco cessation), and Protocol 3 (respiratory disease). For respiratory diagnosis: features favouring COPD over asthma include heavy smoking (>20 cigarettes/day for >15 years), symptoms starting in middle age, persistent daily cough and sputum, and worsening breathlessness with little day-to-day variation. For cardiovascular risk: drug treatment is indicated when blood pressure is ≥160/100 mmHg or when 10-year cardiovascular risk is ≥30%; this patient's BP of 165/100 meets the threshold. For tobacco cessation, the 5 A's apply: A1-ASK (confirm tobacco use), A2-ADVISE (quit clearly and strongly), A3-ASSESS (willingness to quit), A4-ASSIST (set quit date, inform family, remove cigarettes), A5-ARRANGE (follow-up to congratulate success or address relapse). Since the patient cannot stop, motivational counselling and health hazard information should also be provided.",
+    "hint": "Spans Protocol 1 (p.14-16), Protocol 2 tobacco cessation flowchart (p.19), and Protocol 3 diagnosis table (p.20)."
   }
 ]

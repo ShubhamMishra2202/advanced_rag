@@ -10,7 +10,9 @@ from embed import VECTOR_SIZE, encode
 
 log = logging.getLogger(__name__)
 
-COLLECTION = "advanced_rag"
+COLLECTION    = "advanced_rag"
+CHUNK_SIZE    = 500
+CHUNK_OVERLAP = 80
 CLIENT = QdrantClient(url="http://localhost:6333")
 
 
@@ -34,7 +36,7 @@ def _printed_page_num(text: str) -> int | None:
     return int(last_line) if re.fullmatch(r"\d+", last_line) else None
 
 
-def _chunk(text: str, max_chars: int = 500, overlap: int = 80) -> list[str]:
+def _chunk(text: str, max_chars: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -> list[str]:
     text = text.strip()
     if not text:
         return []

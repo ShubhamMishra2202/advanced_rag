@@ -46,3 +46,157 @@
 2026-05-30 09:27:27 | INFO     | __main__ | reason    : The retrieved passages contain the necessary clinical features that distinguish asthma from COPD, including previous diagnoses, symptom patterns, and triggers, which align with the reference answer.
 2026-05-30 09:27:27 | INFO     | __main__ | precision : 0.60 (3/5 relevant)
 2026-05-30 09:27:27 | INFO     | __main__ | MRR       : 1.0000
+2026-05-30 09:30:14 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-05-30 09:30:14 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-05-30 09:30:15 | INFO     | __main__ | === advanced_rag | MODE=query ===
+2026-05-30 09:30:15 | INFO     | __main__ | Query: What clinical features distinguish asthma from COPD according to Protocol 3?
+2026-05-30 09:30:15 | INFO     | retriever | Searching | top_k=5 | query: What clinical features distinguish asthma from COPD according to Protocol 3?
+2026-05-30 09:30:15 | INFO     | embed | Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-05-30 09:30:15 | INFO     | embed | Embedding model loaded (vector size=384)
+2026-05-30 09:30:15 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-05-30 09:30:15 | INFO     | retriever |   [1] score=0.6878 | Medical_document_advance_rag.pdf p.20 para=1 | Package of essential noncommunicable (PEN) disease interventions for primary hea
+2026-05-30 09:30:15 | INFO     | retriever |   [2] score=0.6852 | Medical_document_advance_rag.pdf p.5 para=5 | care in low-resource settings 54 Abbreviations 55 Executive summary 56 Recommend
+2026-05-30 09:30:15 | INFO     | retriever |   [3] score=0.6817 | Medical_document_advance_rag.pdf p.71 para=4 | years; human being only; English language; systematic reviews. As a result of th
+2026-05-30 09:30:15 | INFO     | retriever |   [4] score=0.6816 | Medical_document_advance_rag.pdf p.20 para=4 | tness of breath; ■ symptoms that are persistent with little day-to-day variation
+2026-05-30 09:30:15 | INFO     | retriever |   [5] score=0.6564 | Medical_document_advance_rag.pdf p.83 para=2 | ent and is at risk of dying from asthma. Diagnosis and management of COPD Stable
+2026-05-30 09:30:15 | INFO     | llm | LLM recall judge | model=gpt-4o-mini | chunks=5
+2026-05-30 09:30:17 | INFO     | httpx | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 09:30:17 | INFO     | llm | Recall result | recall=True | reason: The retrieved passages contain the necessary clinical features that distinguish asthma from COPD, including previous diagnoses, symptom patterns, and triggers, which align with the reference answer.
+2026-05-30 09:30:17 | INFO     | llm | LLM precision judge | model=gpt-4o-mini | chunks=5
+2026-05-30 09:30:21 | INFO     | httpx | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 09:30:21 | INFO     | llm | Precision result | precision=0.60 | 3/5 relevant
+2026-05-30 09:30:21 | INFO     | __main__ | === Eval Summary ===
+2026-05-30 09:30:21 | INFO     | __main__ | recall    : True
+2026-05-30 09:30:21 | INFO     | __main__ | reason    : The retrieved passages contain the necessary clinical features that distinguish asthma from COPD, including previous diagnoses, symptom patterns, and triggers, which align with the reference answer.
+2026-05-30 09:30:21 | INFO     | __main__ | precision : 0.60 (3/5 relevant)
+2026-05-30 09:30:21 | INFO     | __main__ | MRR       : 1.0000
+2026-05-30 10:04:41 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-05-30 10:04:41 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-05-30 10:04:42 | INFO     | __main__ | === advanced_rag | MODE=query ===
+2026-05-30 10:04:42 | INFO     | __main__ | Query: What clinical features distinguish asthma from COPD according to Protocol 3?
+2026-05-30 10:04:42 | INFO     | retriever | Searching | top_k=5 | query: What clinical features distinguish asthma from COPD according to Protocol 3?
+2026-05-30 10:04:42 | INFO     | embed | Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-05-30 10:04:42 | INFO     | embed | Embedding model loaded (vector size=384)
+2026-05-30 10:04:42 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-05-30 10:04:42 | INFO     | retriever |   [1] score=0.6878 | Medical_document_advance_rag.pdf p.20 para=1 | Package of essential noncommunicable (PEN) disease interventions for primary hea
+2026-05-30 10:04:42 | INFO     | retriever |   [2] score=0.6852 | Medical_document_advance_rag.pdf p.5 para=5 | care in low-resource settings 54 Abbreviations 55 Executive summary 56 Recommend
+2026-05-30 10:04:42 | INFO     | retriever |   [3] score=0.6817 | Medical_document_advance_rag.pdf p.71 para=4 | years; human being only; English language; systematic reviews. As a result of th
+2026-05-30 10:04:42 | INFO     | retriever |   [4] score=0.6816 | Medical_document_advance_rag.pdf p.20 para=4 | tness of breath; ■ symptoms that are persistent with little day-to-day variation
+2026-05-30 10:04:42 | INFO     | retriever |   [5] score=0.6564 | Medical_document_advance_rag.pdf p.83 para=2 | ent and is at risk of dying from asthma. Diagnosis and management of COPD Stable
+2026-05-30 10:04:42 | INFO     | llm | LLM recall judge | model=gpt-4o-mini | chunks=5
+2026-05-30 10:29:11 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-05-30 10:29:11 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-05-30 10:29:12 | INFO     | __main__ | === advanced_rag | MODE=query ===
+2026-05-30 10:29:12 | INFO     | __main__ | Query: A 45-year-old heavy smoker presents at a primary care clinic with persistent cough, worsening breathlessness, a blood pressure reading of 165/100 mmHg, and fasting blood glucose of 7.2 mmol/L. He also reports he cannot stop smoking. According to WHO PEN, what combination of protocols applies to this patient, what diagnostic steps should be taken to distinguish his respiratory condition, what cardiovascular risk threshold determines whether he needs drug treatment, and what is the step-by-step approach to help him quit tobacco?
+2026-05-30 10:29:12 | INFO     | retriever | Searching | top_k=5 | query: A 45-year-old heavy smoker presents at a primary care clinic with persistent cough, worsening breathlessness, a blood pr
+2026-05-30 10:29:12 | INFO     | embed | Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-05-30 10:29:12 | INFO     | embed | Embedding model loaded (vector size=384)
+2026-05-30 10:29:12 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-05-30 10:29:12 | INFO     | retriever |   [1] score=0.6481 | Medical_document_advance_rag.pdf p.19 para=1 | I. Protocols for primary care Reinforce message that Do you use A1: ASK NO tobac
+2026-05-30 10:29:12 | INFO     | retriever |   [2] score=0.6070 | Medical_document_advance_rag.pdf p.16 para=3 | requency and amount) ■ Angina, breathlessness on exertion ■ Occupation (sedentar
+2026-05-30 10:29:12 | INFO     | retriever |   [3] score=0.5745 | Medical_document_advance_rag.pdf p.17 para=2 | ) or random blood sugar ≥11.i ■ Auscultate lungs (bilateral basal mmol/l (200 mg
+2026-05-30 10:29:12 | INFO     | retriever |   [4] score=0.5641 | Medical_document_advance_rag.pdf p.16 para=2 | le: ■ age > 40 years ■ smokers ■ waist circumference ( ≥ 90 cm in women ≥100 cm 
+2026-05-30 10:29:12 | INFO     | retriever |   [5] score=0.5630 | Medical_document_advance_rag.pdf p.121 para=5 | test is positive a confirmatory blood glucose test need to be arranged to diagno
+2026-05-30 10:29:12 | INFO     | llm | LLM recall judge | model=gpt-4o-mini | chunks=5
+2026-05-30 10:29:15 | INFO     | httpx | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 10:29:15 | INFO     | llm | Recall result | recall=True | reason: The retrieved passages collectively provide the necessary information regarding the WHO PEN protocols applicable to the patient, diagnostic steps for respiratory conditions, cardiovascular risk thresholds for drug treatment, and the step-by-step approach for tobacco cessation.
+2026-05-30 10:29:15 | INFO     | llm | LLM precision judge | model=gpt-4o-mini | chunks=5
+2026-05-30 10:29:20 | INFO     | httpx | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 10:29:20 | INFO     | llm | Precision result | precision=0.60 | 3/5 relevant
+2026-05-30 10:29:20 | INFO     | __main__ | === Eval Summary ===
+2026-05-30 10:29:20 | INFO     | __main__ | recall    : True
+2026-05-30 10:29:20 | INFO     | __main__ | reason    : The retrieved passages collectively provide the necessary information regarding the WHO PEN protocols applicable to the patient, diagnostic steps for respiratory conditions, cardiovascular risk thresholds for drug treatment, and the step-by-step approach for tobacco cessation.
+2026-05-30 10:29:20 | INFO     | __main__ | precision : 0.60 (3/5 relevant)
+2026-05-30 10:29:20 | INFO     | __main__ | MRR       : 1.0000
+2026-05-30 11:17:20 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-05-30 11:17:20 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-05-30 11:17:21 | INFO     | __main__ | === advanced_rag | MODE=ingest ===
+2026-05-30 11:17:21 | INFO     | ingestion | Ingesting PDF: /home/shubhammishra/Desktop/Personal/advanced_rag/data/Medical_document_advance_rag.pdf
+2026-05-30 11:17:21 | INFO     | httpx | HTTP Request: GET http://localhost:6333/collections/advanced_rag/exists "HTTP/1.1 200 OK"
+2026-05-30 11:17:21 | WARNING  | ingestion | recreate=True — dropping existing collection 'advanced_rag'
+2026-05-30 11:17:21 | INFO     | httpx | HTTP Request: DELETE http://localhost:6333/collections/advanced_rag "HTTP/1.1 200 OK"
+2026-05-30 11:17:21 | INFO     | httpx | HTTP Request: GET http://localhost:6333/collections/advanced_rag/exists "HTTP/1.1 200 OK"
+2026-05-30 11:17:21 | INFO     | ingestion | Creating collection 'advanced_rag' (size=768, distance=COSINE)
+2026-05-30 11:17:21 | INFO     | httpx | HTTP Request: PUT http://localhost:6333/collections/advanced_rag "HTTP/1.1 200 OK"
+2026-05-30 11:19:18 | INFO     | ingestion | Extracted text from 210 page(s)
+2026-05-30 11:19:18 | WARNING  | ingestion | 4 page(s) yielded no text (images/scans?)
+2026-05-30 11:19:18 | INFO     | ingestion | Created 1018 chunk(s) across 210 page(s)
+2026-05-30 11:19:18 | INFO     | embed | Loading embedding model: BAAI/bge-base-en-v1.5
+2026-05-30 11:19:18 | INFO     | httpx | HTTP Request: GET https://huggingface.co/api/models/qdrant/bge-base-en-v1.5-onnx-q "HTTP/1.1 307 Temporary Redirect"
+2026-05-30 11:19:18 | INFO     | httpx | HTTP Request: GET https://huggingface.co/api/models/Qdrant/bge-base-en-v1.5-onnx-Q "HTTP/1.1 200 OK"
+2026-05-30 11:19:19 | INFO     | httpx | HTTP Request: GET https://huggingface.co/api/models/qdrant/bge-base-en-v1.5-onnx-q/tree/738cad1c108e2f23649db9e44b2eab988626493b?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-05-30 11:19:19 | INFO     | httpx | HTTP Request: GET https://huggingface.co/api/models/Qdrant/bge-base-en-v1.5-onnx-Q/tree/738cad1c108e2f23649db9e44b2eab988626493b?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-05-30 11:19:19 | INFO     | httpx | HTTP Request: GET https://huggingface.co/api/models/qdrant/bge-base-en-v1.5-onnx-q/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: GET https://huggingface.co/api/models/Qdrant/bge-base-en-v1.5-onnx-Q/revision/main "HTTP/1.1 200 OK"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: HEAD https://huggingface.co/qdrant/bge-base-en-v1.5-onnx-q/resolve/738cad1c108e2f23649db9e44b2eab988626493b/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: HEAD https://huggingface.co/qdrant/bge-base-en-v1.5-onnx-q/resolve/738cad1c108e2f23649db9e44b2eab988626493b/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: HEAD https://huggingface.co/qdrant/bge-base-en-v1.5-onnx-q/resolve/738cad1c108e2f23649db9e44b2eab988626493b/model_optimized.onnx "HTTP/1.1 307 Temporary Redirect"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: HEAD https://huggingface.co/qdrant/bge-base-en-v1.5-onnx-q/resolve/738cad1c108e2f23649db9e44b2eab988626493b/special_tokens_map.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: HEAD https://huggingface.co/qdrant/bge-base-en-v1.5-onnx-q/resolve/738cad1c108e2f23649db9e44b2eab988626493b/tokenizer.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: HEAD https://huggingface.co/Qdrant/bge-base-en-v1.5-onnx-Q/resolve/738cad1c108e2f23649db9e44b2eab988626493b/tokenizer.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: HEAD https://huggingface.co/Qdrant/bge-base-en-v1.5-onnx-Q/resolve/738cad1c108e2f23649db9e44b2eab988626493b/model_optimized.onnx "HTTP/1.1 302 Found"
+2026-05-30 11:19:20 | WARNING  | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: HEAD https://huggingface.co/Qdrant/bge-base-en-v1.5-onnx-Q/resolve/738cad1c108e2f23649db9e44b2eab988626493b/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: HEAD https://huggingface.co/Qdrant/bge-base-en-v1.5-onnx-Q/resolve/738cad1c108e2f23649db9e44b2eab988626493b/special_tokens_map.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: HEAD https://huggingface.co/Qdrant/bge-base-en-v1.5-onnx-Q/resolve/738cad1c108e2f23649db9e44b2eab988626493b/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qdrant/bge-base-en-v1.5-onnx-Q/738cad1c108e2f23649db9e44b2eab988626493b/tokenizer.json "HTTP/1.1 200 OK"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qdrant/bge-base-en-v1.5-onnx-Q/738cad1c108e2f23649db9e44b2eab988626493b/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qdrant/bge-base-en-v1.5-onnx-Q/738cad1c108e2f23649db9e44b2eab988626493b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qdrant/bge-base-en-v1.5-onnx-Q/738cad1c108e2f23649db9e44b2eab988626493b/config.json "HTTP/1.1 200 OK"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qdrant/bge-base-en-v1.5-onnx-Q/738cad1c108e2f23649db9e44b2eab988626493b/tokenizer.json "HTTP/1.1 200 OK"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qdrant/bge-base-en-v1.5-onnx-Q/738cad1c108e2f23649db9e44b2eab988626493b/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qdrant/bge-base-en-v1.5-onnx-Q/738cad1c108e2f23649db9e44b2eab988626493b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-30 11:19:20 | INFO     | httpx | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qdrant/bge-base-en-v1.5-onnx-Q/738cad1c108e2f23649db9e44b2eab988626493b/config.json "HTTP/1.1 200 OK"
+2026-05-30 11:19:21 | INFO     | httpx | HTTP Request: GET https://huggingface.co/api/models/Qdrant/bge-base-en-v1.5-onnx-Q/xet-read-token/738cad1c108e2f23649db9e44b2eab988626493b "HTTP/1.1 200 OK"
+2026-05-30 11:20:10 | INFO     | embed | Embedding model loaded (vector size=768)
+2026-05-30 11:23:30 | INFO     | httpx | HTTP Request: PUT http://localhost:6333/collections/advanced_rag/points?wait=true "HTTP/1.1 200 OK"
+2026-05-30 11:23:30 | INFO     | ingestion | Ingest complete — 1018 point(s) upserted into 'advanced_rag'
+2026-05-30 11:23:30 | INFO     | __main__ | Ingest finished — 1018 chunk(s) indexed
+2026-05-30 11:27:10 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-05-30 11:27:10 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-05-30 11:27:11 | INFO     | __main__ | === advanced_rag | MODE=query ===
+2026-05-30 11:27:11 | INFO     | __main__ | Query: A 45-year-old heavy smoker presents at a primary care clinic with persistent cough, worsening breathlessness, a blood pressure reading of 165/100 mmHg, and fasting blood glucose of 7.2 mmol/L. He also reports he cannot stop smoking. According to WHO PEN, what combination of protocols applies to this patient, what diagnostic steps should be taken to distinguish his respiratory condition, what cardiovascular risk threshold determines whether he needs drug treatment, and what is the step-by-step approach to help him quit tobacco?
+2026-05-30 11:27:11 | INFO     | retriever | Searching | top_k=5 | query: A 45-year-old heavy smoker presents at a primary care clinic with persistent cough, worsening breathlessness, a blood pr
+2026-05-30 11:27:11 | INFO     | embed | Loading embedding model: BAAI/bge-base-en-v1.5
+2026-05-30 11:27:12 | INFO     | embed | Embedding model loaded (vector size=768)
+2026-05-30 11:27:12 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-05-30 11:27:12 | INFO     | retriever |   [1] score=0.7816 | Medical_document_advance_rag.pdf p.118 para=3 | sk. The recommendations assist people to: ■ quit tobacco use, or reduce the amou
+2026-05-30 11:27:12 | INFO     | retriever |   [2] score=0.7681 | Medical_document_advance_rag.pdf p.16 para=1 | Package of essential noncommunicable (PEN) disease interventions for primary hea
+2026-05-30 11:27:12 | INFO     | retriever |   [3] score=0.7604 | Medical_document_advance_rag.pdf p.121 para=5 | test is positive a confirmatory blood glucose test need to be arranged to diagno
+2026-05-30 11:27:12 | INFO     | retriever |   [4] score=0.7534 | Medical_document_advance_rag.pdf p.72 para=5 | wers: ■ The guideline is focused mainly on treatment and does not address the is
+2026-05-30 11:27:12 | INFO     | retriever |   [5] score=0.7489 | Medical_document_advance_rag.pdf p.18 para=3 | ivity, smoking cessation controlled by diet and avoiding harmful use of alcohol 
+2026-05-30 11:27:12 | INFO     | llm | LLM recall judge | model=gpt-4o-mini | chunks=5
+2026-05-30 11:27:15 | INFO     | httpx | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 11:27:15 | INFO     | llm | Recall result | recall=True | reason: The retrieved passages collectively provide information on the WHO PEN protocols relevant to the patient's conditions, diagnostic steps for respiratory issues, cardiovascular risk thresholds for drug treatment, and a structured approach for tobacco cessation.
+2026-05-30 11:27:15 | INFO     | llm | LLM precision judge | model=gpt-4o-mini | chunks=5
+2026-05-30 11:27:20 | INFO     | httpx | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 11:27:20 | INFO     | llm | Precision result | precision=0.60 | 3/5 relevant
+2026-05-30 11:27:20 | INFO     | __main__ | === Eval Summary ===
+2026-05-30 11:27:20 | INFO     | __main__ | recall    : True
+2026-05-30 11:27:20 | INFO     | __main__ | reason    : The retrieved passages collectively provide information on the WHO PEN protocols relevant to the patient's conditions, diagnostic steps for respiratory issues, cardiovascular risk thresholds for drug treatment, and a structured approach for tobacco cessation.
+2026-05-30 11:27:20 | INFO     | __main__ | precision : 0.60 (3/5 relevant)
+2026-05-30 11:27:20 | INFO     | __main__ | MRR       : 0.5000
+2026-05-30 11:40:46 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-05-30 11:40:46 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-05-30 11:40:47 | INFO     | __main__ | === advanced_rag | MODE=query ===
+2026-05-30 11:40:52 | INFO     | __main__ | Query: A 45-year-old heavy smoker presents at a primary care clinic with persistent cough, worsening breathlessness, a blood pressure reading of 165/100 mmHg, and fasting blood glucose of 7.2 mmol/L. He also reports he cannot stop smoking. According to WHO PEN, what combination of protocols applies to this patient, what diagnostic steps should be taken to distinguish his respiratory condition, what cardiovascular risk threshold determines whether he needs drug treatment, and what is the step-by-step approach to help him quit tobacco?
+2026-05-30 11:40:52 | INFO     | retriever | Searching | top_k=5 | query: A 45-year-old heavy smoker presents at a primary care clinic with persistent cough, worsening breathlessness, a blood pr
+2026-05-30 11:40:52 | INFO     | embed | Loading embedding model: BAAI/bge-base-en-v1.5
+2026-05-30 11:40:54 | INFO     | embed | Embedding model loaded (vector size=768)
+2026-05-30 11:40:54 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-05-30 11:40:54 | INFO     | retriever |   [1] score=0.7816 | Medical_document_advance_rag.pdf p.118 para=3 | sk. The recommendations assist people to: ■ quit tobacco use, or reduce the amou
+2026-05-30 11:40:54 | INFO     | retriever |   [2] score=0.7681 | Medical_document_advance_rag.pdf p.16 para=1 | Package of essential noncommunicable (PEN) disease interventions for primary hea
+2026-05-30 11:40:54 | INFO     | retriever |   [3] score=0.7604 | Medical_document_advance_rag.pdf p.121 para=5 | test is positive a confirmatory blood glucose test need to be arranged to diagno
+2026-05-30 11:40:54 | INFO     | retriever |   [4] score=0.7534 | Medical_document_advance_rag.pdf p.72 para=5 | wers: ■ The guideline is focused mainly on treatment and does not address the is
+2026-05-30 11:40:54 | INFO     | retriever |   [5] score=0.7489 | Medical_document_advance_rag.pdf p.18 para=3 | ivity, smoking cessation controlled by diet and avoiding harmful use of alcohol 
+2026-05-30 11:40:54 | INFO     | llm | LLM recall judge | model=gpt-4o-mini | chunks=5
+2026-05-30 11:40:56 | INFO     | httpx | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 11:40:56 | INFO     | llm | Recall result | recall=True | reason: The retrieved passages collectively provide information on the WHO PEN protocols relevant to the patient's conditions, diagnostic steps for respiratory issues, cardiovascular risk thresholds for drug treatment, and a structured approach for tobacco cessation.
+2026-05-30 11:40:57 | INFO     | llm | LLM precision judge | model=gpt-4o-mini | chunks=5
+2026-05-30 11:41:02 | INFO     | httpx | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 11:41:02 | INFO     | llm | Precision result | precision=0.60 | 3/5 relevant
+2026-05-30 11:41:02 | INFO     | __main__ | === Eval Summary ===
+2026-05-30 11:41:02 | INFO     | __main__ | recall    : True
+2026-05-30 11:41:02 | INFO     | __main__ | reason    : The retrieved passages collectively provide information on the WHO PEN protocols relevant to the patient's conditions, diagnostic steps for respiratory issues, cardiovascular risk thresholds for drug treatment, and a structured approach for tobacco cessation.
+2026-05-30 11:41:02 | INFO     | __main__ | precision : 0.60 (3/5 relevant)
+2026-05-30 11:41:02 | INFO     | __main__ | MRR       : 0.5000

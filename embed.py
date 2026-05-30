@@ -5,8 +5,8 @@ from fastembed import TextEmbedding
 
 log = logging.getLogger(__name__)
 
-VECTOR_SIZE = 384
-_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+VECTOR_SIZE = 768
+_MODEL_NAME = "BAAI/bge-base-en-v1.5"
 
 
 @lru_cache(maxsize=1)
