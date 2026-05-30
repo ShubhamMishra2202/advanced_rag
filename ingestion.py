@@ -1,5 +1,6 @@
 """Load a PDF, chunk by page, embed, and upsert into Qdrant."""
 import logging
+import re
 from pathlib import Path
 from uuid import NAMESPACE_DNS, uuid5
 import pdfplumber
@@ -25,6 +26,12 @@ def _ensure_collection(recreate: bool) -> None:
         )
     else:
         log.info("Collection '%s' already exists — skipping creation", COLLECTION)
+
+
+def _printed_page_num(text: str) -> int | None:
+    """Return the printed page number from the last line of a page, or None."""
+    last_line = text.strip().split("\n")[-1].strip() if text.strip() else ""
+    return int(last_line) if re.fullmatch(r"\d+", last_line) else None
 
 
 def _chunk(text: str, max_chars: int = 500, overlap: int = 80) -> list[str]:
@@ -58,9 +65,19 @@ def ingest(pdf_path: str | Path, *, recreate: bool = False) -> int:
     if empty_pages:
         log.warning("%d page(s) yielded no text (images/scans?)", empty_pages)
 
+    # Resolve each page's number: prefer the printed footer number, fall back to PDF index.
+    page_numbers: list[int] = []
+    for pdf_idx, page_text in enumerate(pages, start=1):
+        printed = _printed_page_num(page_text)
+        if printed is not None:
+            page_numbers.append(printed)
+        else:
+            log.debug("No printed page number on PDF index %d — using PDF index", pdf_idx)
+            page_numbers.append(pdf_idx)
+
     rows: list[tuple[int, int, str]] = [
         (page_num, para_idx, chunk)
-        for page_num, page_text in enumerate(pages, start=1)
+        for page_num, page_text in zip(page_numbers, pages)
         for para_idx, chunk in enumerate(_chunk(page_text), start=1)
     ]
     log.info("Created %d chunk(s) across %d page(s)", len(rows), len(pages))

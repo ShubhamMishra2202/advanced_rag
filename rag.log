@@ -22,3 +22,27 @@
 2026-05-30 09:15:01 | INFO     | __main__ | reason    : The retrieved passages contain the necessary clinical features that distinguish asthma from COPD, including previous diagnoses, symptom patterns, and triggers, which align with the reference answer.
 2026-05-30 09:15:01 | INFO     | __main__ | precision : 0.60 (3/5 relevant)
 2026-05-30 09:15:01 | INFO     | __main__ | MRR       : 1.0000
+2026-05-30 09:27:21 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-05-30 09:27:21 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-05-30 09:27:22 | INFO     | __main__ | === advanced_rag | MODE=query ===
+2026-05-30 09:27:22 | INFO     | __main__ | Query: What clinical features distinguish asthma from COPD according to Protocol 3?
+2026-05-30 09:27:22 | INFO     | retriever | Searching | top_k=5 | query: What clinical features distinguish asthma from COPD according to Protocol 3?
+2026-05-30 09:27:22 | INFO     | embed | Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-05-30 09:27:22 | INFO     | embed | Embedding model loaded (vector size=384)
+2026-05-30 09:27:22 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-05-30 09:27:22 | INFO     | retriever |   [1] score=0.6878 | Medical_document_advance_rag.pdf p.20 para=1 | Package of essential noncommunicable (PEN) disease interventions for primary hea
+2026-05-30 09:27:22 | INFO     | retriever |   [2] score=0.6852 | Medical_document_advance_rag.pdf p.5 para=5 | care in low-resource settings 54 Abbreviations 55 Executive summary 56 Recommend
+2026-05-30 09:27:22 | INFO     | retriever |   [3] score=0.6817 | Medical_document_advance_rag.pdf p.71 para=4 | years; human being only; English language; systematic reviews. As a result of th
+2026-05-30 09:27:22 | INFO     | retriever |   [4] score=0.6816 | Medical_document_advance_rag.pdf p.20 para=4 | tness of breath; ■ symptoms that are persistent with little day-to-day variation
+2026-05-30 09:27:22 | INFO     | retriever |   [5] score=0.6564 | Medical_document_advance_rag.pdf p.83 para=2 | ent and is at risk of dying from asthma. Diagnosis and management of COPD Stable
+2026-05-30 09:27:22 | INFO     | llm | LLM recall judge | model=gpt-4o-mini | chunks=5
+2026-05-30 09:27:24 | INFO     | httpx | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 09:27:24 | INFO     | llm | Recall result | recall=True | reason: The retrieved passages contain the necessary clinical features that distinguish asthma from COPD, including previous diagnoses, symptom patterns, and triggers, which align with the reference answer.
+2026-05-30 09:27:25 | INFO     | llm | LLM precision judge | model=gpt-4o-mini | chunks=5
+2026-05-30 09:27:27 | INFO     | httpx | HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-30 09:27:27 | INFO     | llm | Precision result | precision=0.60 | 3/5 relevant
+2026-05-30 09:27:27 | INFO     | __main__ | === Eval Summary ===
+2026-05-30 09:27:27 | INFO     | __main__ | recall    : True
+2026-05-30 09:27:27 | INFO     | __main__ | reason    : The retrieved passages contain the necessary clinical features that distinguish asthma from COPD, including previous diagnoses, symptom patterns, and triggers, which align with the reference answer.
+2026-05-30 09:27:27 | INFO     | __main__ | precision : 0.60 (3/5 relevant)
+2026-05-30 09:27:27 | INFO     | __main__ | MRR       : 1.0000
