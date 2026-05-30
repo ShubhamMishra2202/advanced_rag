@@ -1,7 +1,7 @@
 """Load a PDF, chunk by page, embed, and upsert into Qdrant."""
 from pathlib import Path
 from uuid import NAMESPACE_DNS, uuid5
-from pypdf import PdfReader
+import pdfplumber
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, PointStruct, VectorParams
 from embed import VECTOR_SIZE, encode
@@ -40,7 +40,11 @@ def ingest(pdf_path: str | Path, *, recreate: bool = False) -> int:
         raise ValueError(f"Expected a PDF file, got: {pdf_path}")
     _ensure_collection(recreate)
     doc = pdf_path.name
-    pages = [page.extract_text() or "" for page in PdfReader(str(pdf_path)).pages]
+    with pdfplumber.open(str(pdf_path)) as pdf:
+        pages = [
+            page.extract_text(x_tolerance=3, y_tolerance=3) or ""
+            for page in pdf.pages
+        ]
     rows: list[tuple[int, int, str]] = [
         (page_num, para_idx, chunk)
         for page_num, page_text in enumerate(pages, start=1)

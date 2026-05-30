@@ -6,12 +6,12 @@ from eval.metrics import reciprocal_rank
 
 PDF = Path(__file__).resolve().parent / "data" / "Medical_document_advance_rag.pdf"
 MODE = "query"  # "ingest" | "query"
-QUESTION = "What are the five core parameters used in the NCD costing tool to estimate scale-up costs, and how do they interact?"
-GROUND_TRUTH = "The five parameters are: (1) population of the country/region, (2) prevalence/incidence of the disease or risk factor, (3) coverage — proportion of population in need receiving the intervention, (4) resource quantities needed to implement the intervention (human resources, medicines, equipment), and (5) prices or unit costs for each resource item. Population times prevalence defines the population at risk/in need; resource use times price provides cost per case; and coverage is the main mechanism by which scale-up takes place over time"  # set to "" to skip LLM eval
+QUESTION = "What clinical features distinguish asthma from COPD according to Protocol 3?"
+GROUND_TRUTH = "Features favouring asthma include: previous diagnosis of asthma, symptoms since childhood or early adulthood, history of hayfever/eczema/allergies, intermittent symptoms with asymptomatic periods, symptoms worse at night or early morning, symptoms triggered by respiratory infection/exercise/weather/stress, and symptoms responding to salbutamol. Features favouring COPD include: previous diagnosis of COPD, history of heavy smoking (>20 cigarettes/day for >15 years), history of heavy and prolonged exposure to burning fossil fuels in enclosed space or occupational dust, symptoms starting in middle age (after 40), symptoms worsening slowly over a long period, and long history of daily cough and sputum production"  # set to "" to skip LLM eval
 
 if __name__ == "__main__":
     if MODE == "ingest":
-        print(f"Indexed {ingest(PDF)} chunk(s)")
+        print(f"Indexed {ingest(PDF, recreate=True)} chunk(s)")
     else:
         hits = search(QUESTION)
         if not hits:
