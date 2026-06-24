@@ -5,8 +5,11 @@ from pathlib import Path
 from uuid import NAMESPACE_DNS, uuid5
 import pdfplumber
 from qdrant_client import QdrantClient
-from qdrant_client.models import Distance, PointStruct, VectorParams
-from embed import VECTOR_SIZE, encode
+from qdrant_client.models import (
+    Distance, PointStruct, VectorParams,
+    SparseVectorParams, SparseVector,
+)
+from embed import VECTOR_SIZE, encode, encode_sparse
 
 log = logging.getLogger(__name__)
 
@@ -21,10 +24,15 @@ def _ensure_collection(recreate: bool) -> None:
         log.warning("recreate=True — dropping existing collection '%s'", COLLECTION)
         CLIENT.delete_collection(COLLECTION)
     if not CLIENT.collection_exists(COLLECTION):
-        log.info("Creating collection '%s' (size=%d, distance=COSINE)", COLLECTION, VECTOR_SIZE)
+        log.info("Creating collection '%s' (dense=%d-d COSINE, sparse=BM25)", COLLECTION, VECTOR_SIZE)
         CLIENT.create_collection(
             collection_name=COLLECTION,
-            vectors_config=VectorParams(size=VECTOR_SIZE, distance=Distance.COSINE),
+            vectors_config={
+                "dense": VectorParams(size=VECTOR_SIZE, distance=Distance.COSINE),
+            },
+            sparse_vectors_config={
+                "sparse": SparseVectorParams(),
+            },
         )
     else:
         log.info("Collection '%s' already exists — skipping creation", COLLECTION)
@@ -88,14 +96,20 @@ def ingest(pdf_path: str | Path, *, recreate: bool = False) -> int:
         return 0
 
     log.debug("Embedding %d chunk(s)...", len(rows))
-    vectors = encode([chunk for _, _, chunk in rows])
+    texts = [chunk for _, _, chunk in rows]
+    vectors = encode(texts)
+    sparse_vectors = encode_sparse(texts)
     points = [
         PointStruct(
             id=str(uuid5(NAMESPACE_DNS, f"{pdf_path}:{doc}:{page}:{para}:{chunk[:64]}")),
-            vector=vec,
+            vector={
+                "dense": dense_vec,
+                "sparse": SparseVector(indices=sparse_indices, values=sparse_values),
+            },
             payload={"text": chunk, "doc": doc, "page": page, "paragraph": para},
         )
-        for (page, para, chunk), vec in zip(rows, vectors)
+        for (page, para, chunk), dense_vec, (sparse_indices, sparse_values)
+        in zip(rows, vectors, sparse_vectors)
     ]
     log.debug("Upserting %d point(s) into Qdrant...", len(points))
     CLIENT.upsert(collection_name=COLLECTION, points=points)

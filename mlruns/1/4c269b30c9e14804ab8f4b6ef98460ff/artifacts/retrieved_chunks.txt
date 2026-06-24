@@ -1,0 +1,64 @@
+[1] p.19 | score=0.6481
+I. Protocols for primary care
+Reinforce message that
+Do you use
+A1: ASK NO tobacco increases risk of
+tobacco?
+heart disease
+Advise to quit in a clear, strong and
+personalized manner
+“Tobacco use increases the risk of
+A2: ADVISE YES developing a heart attack, stroke, lung
+cancer and respiratory diseases. Quitting
+tobacco use is the one most important
+thing you can do to protect your heart and
+health, you have to quit now.”
+A3: ASSESS Are you willing to make a quit attempt now ?
+YES NO
+Assist in p
+
+[2] p.16 | score=0.6070
+requency and amount)
+■ Angina, breathlessness on exertion ■ Occupation (sedentary or active)
+and lying flat, numbness or weakness ■ Engaged in more than 30 minutes of
+of limbs, loss of weight, increased thirst, physical activity at least 5 days a week
+polyuria, puffiness of face, swelling of (yes/no)
+feet, passing blood in urine etc ■ Family history of premature heart
+■ Medicines that the patient is taking disease or stroke in first degree relatives
+■ Current tobacco use (yes/no) (answer
+yes if
+
+[3] p.17 | score=0.5745
+) or random blood sugar ≥11.i
+■ Auscultate lungs (bilateral basal mmol/l (200 mg/dl))
+crepitations)
+■ Examine abdomen (tender liver) (Point of care devices can be used for
+■ In DM patients examine feet; sensations, testing blood sugar if laboratory facilities
+pulses, and ulcers are not available)
+Action 3. Estimate cardiovascular risk (in those not referred):
+■ Use the WHO/ISH risk charts relevant ■ If the person is already on treatment,
+to the WHO subregion (Annex and CD) use pretreatment level
+
+[4] p.16 | score=0.5641
+le:
+■ age > 40 years
+■ smokers
+■ waist circumference ( ≥ 90 cm in women ≥100 cm in men)
+■ known hypertension
+■ known DM
+■ history of premature CVD in first degree relatives
+■ history of DM or kidney disease in first degree relatives
+Follow instructions given in Action 1 to Action 4, step by step
+Action 1. Ask about:
+■ Diagnosed heart disease, stroke, TIA, ■ Alcohol consumption (yes/no) (if `Yes`,
+DM, kidney disease frequency and amount)
+■ Angina, breathlessness on exertion ■ Occupation (sedentar
+
+[5] p.121 | score=0.5630
+test is positive a confirmatory
+blood glucose test need to be arranged to diagnose diabetes mellitus.
+7 All current smokers and those who quit smoking less than 1 year before the assess-
+ment are considered smokers for assessing cardiovascular risk.
+8 Systolic blood pressure, taken as the mean of two readings on each of two occasions,
+is sufficient for assessing risk but not for establishing a pretreatment baseline.
+9 The mean of two non-fasting measurements of serum cholesterol by dry chemistry

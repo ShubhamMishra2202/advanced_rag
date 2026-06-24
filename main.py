@@ -1,3 +1,5 @@
+import argparse
+import json
 import logging
 import mlflow
 from pathlib import Path
@@ -5,7 +7,7 @@ from pathlib import Path
 import logger as _log_setup
 _log_setup.setup()
 
-from embed import _MODEL_NAME, VECTOR_SIZE
+from embed import _MODEL_NAME, VECTOR_SIZE, _SPARSE_MODEL_NAME
 from ingestion import ingest, CHUNK_SIZE, CHUNK_OVERLAP
 from retriever import search
 from llm import judge_evidence_recall, judge_retrieval_precision
@@ -15,6 +17,7 @@ log = logging.getLogger(__name__)
 
 # ── Configuration ─────────────────────────────────────────────────────────────
 PDF            = Path(__file__).resolve().parent / "data" / "Medical_document_advance_rag.pdf"
+EVAL_DATASET   = Path(__file__).resolve().parent / "eval" / "rag_eval_dataset_who_pen.json"
 MODE           = "query"          # "ingest" | "query"
 TOP_K          = 5
 PDF_EXTRACTOR  = "pdfplumber"
@@ -57,22 +60,29 @@ MLFLOW_EXPERIMENT = "advanced_rag_retrieval"
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
-def _run_query() -> None:
+def _run_query(
+    run_description: str = RUN_DESCRIPTION,
+    retrieval_mode: str = "hybrid",
+    question: str = QUESTION,
+    ground_truth: str = GROUND_TRUTH,
+) -> None:
     mlflow.set_experiment(MLFLOW_EXPERIMENT)
-    with mlflow.start_run(run_name=RUN_DESCRIPTION):
+    with mlflow.start_run(run_name=run_description):
         mlflow.log_params({
             "embedding_model": _MODEL_NAME,
+            "sparse_model":    _SPARSE_MODEL_NAME,
             "vector_size":     VECTOR_SIZE,
             "chunk_size":      CHUNK_SIZE,
             "chunk_overlap":   CHUNK_OVERLAP,
             "top_k":           TOP_K,
             "pdf_extractor":   PDF_EXTRACTOR,
+            "retrieval_mode":  retrieval_mode,
         })
-        mlflow.set_tag("query", QUESTION[:250])
-        mlflow.set_tag("description", RUN_DESCRIPTION)
+        mlflow.set_tag("query", question[:250])
+        mlflow.set_tag("description", run_description)
 
-        log.info("Query: %s", QUESTION)
-        hits = search(QUESTION, top_k=TOP_K)
+        log.info("Query: %s", question)
+        hits = search(question, top_k=TOP_K, mode=retrieval_mode)
 
         if not hits:
             log.warning("No results returned")
@@ -93,14 +103,14 @@ def _run_query() -> None:
         mlflow.log_metric("top1_score", hits[0]["score"])
         mlflow.log_metric("mean_score", sum(h["score"] for h in hits) / len(hits))
 
-        if not GROUND_TRUTH:
+        if not ground_truth:
             log.info("LLM eval skipped (GROUND_TRUTH not set)")
             print("--- LLM eval skipped (set GROUND_TRUTH to enable) ---")
             return
 
         chunks = [h["text"] for h in hits]
-        recall    = judge_evidence_recall(QUESTION, ground_truth=GROUND_TRUTH, retrieved_chunks=chunks)
-        precision = judge_retrieval_precision(QUESTION, retrieved_chunks=chunks)
+        recall    = judge_evidence_recall(question, ground_truth=ground_truth, retrieved_chunks=chunks)
+        precision = judge_retrieval_precision(question, retrieved_chunks=chunks)
         mrr       = reciprocal_rank(precision["judgments"])
 
         mlflow.log_metrics({
@@ -133,10 +143,51 @@ def _run_query() -> None:
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    log.info("=== advanced_rag | MODE=%s ===", MODE)
-    if MODE == "ingest":
+    parser = argparse.ArgumentParser(description="Advanced RAG pipeline")
+    parser.add_argument(
+        "--mode", choices=["ingest", "query"], default=MODE,
+        help="ingest: index the PDF into Qdrant | query: run retrieval + eval (default: %(default)s)",
+    )
+    parser.add_argument(
+        "--retrieval", choices=["dense", "hybrid"], default="hybrid",
+        help="dense: cosine similarity only | hybrid: dense + BM25 with RRF fusion (default: %(default)s)",
+    )
+    parser.add_argument(
+        "--eval-id", type=int, default=None,
+        help="Run a specific query from the WHO PEN eval dataset by ID (1-51). Overrides the hardcoded QUESTION/GROUND_TRUTH.",
+    )
+    parser.add_argument(
+        "--run-description", default=None,
+        help="Label for this MLflow run. Auto-generated if not provided.",
+    )
+    args = parser.parse_args()
+
+    # Load eval query if --eval-id is provided
+    question, ground_truth = QUESTION, GROUND_TRUTH
+    eval_tag = ""
+    if args.eval_id is not None:
+        dataset = json.loads(EVAL_DATASET.read_text())
+        entry = next((e for e in dataset if e["id"] == args.eval_id), None)
+        if entry is None:
+            parser.error(f"--eval-id {args.eval_id} not found in dataset (valid range: 1–{len(dataset)})")
+        question = entry["query"]
+        ground_truth = entry["ground_truth"]
+        eval_tag = f" | eval-id={args.eval_id} [{entry['difficulty']}]"
+        print(f"Loaded eval query #{args.eval_id}: {question[:80]}...")
+
+    run_desc = args.run_description or (
+        f"MiniLM-L6-v2+BM25 | pdfplumber | char-500/80 | {args.retrieval}{eval_tag}"
+    )
+
+    log.info("=== advanced_rag | MODE=%s | retrieval=%s ===", args.mode, args.retrieval)
+    if args.mode == "ingest":
         n = ingest(PDF, recreate=True)
         log.info("Ingest finished — %d chunk(s) indexed", n)
         print(f"Indexed {n} chunk(s)")
     else:
-        _run_query()
+        _run_query(
+            run_description=run_desc,
+            retrieval_mode=args.retrieval,
+            question=question,
+            ground_truth=ground_truth,
+        )

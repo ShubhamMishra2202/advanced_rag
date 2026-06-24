@@ -1,0 +1,67 @@
+[1] p.121 | score=0.6667
+test is positive a confirmatory
+blood glucose test need to be arranged to diagnose diabetes mellitus.
+7 All current smokers and those who quit smoking less than 1 year before the assess-
+ment are considered smokers for assessing cardiovascular risk.
+8 Systolic blood pressure, taken as the mean of two readings on each of two occasions,
+is sufficient for assessing risk but not for establishing a pretreatment baseline.
+9 The mean of two non-fasting measurements of serum cholesterol by dry chemistry
+
+[2] p.19 | score=0.5000
+I. Protocols for primary care
+Reinforce message that
+Do you use
+A1: ASK NO tobacco increases risk of
+tobacco?
+heart disease
+Advise to quit in a clear, strong and
+personalized manner
+“Tobacco use increases the risk of
+A2: ADVISE YES developing a heart attack, stroke, lung
+cancer and respiratory diseases. Quitting
+tobacco use is the one most important
+thing you can do to protect your heart and
+health, you have to quit now.”
+A3: ASSESS Are you willing to make a quit attempt now ?
+YES NO
+Assist in p
+
+[3] p.16 | score=0.3333
+requency and amount)
+■ Angina, breathlessness on exertion ■ Occupation (sedentary or active)
+and lying flat, numbness or weakness ■ Engaged in more than 30 minutes of
+of limbs, loss of weight, increased thirst, physical activity at least 5 days a week
+polyuria, puffiness of face, swelling of (yes/no)
+feet, passing blood in urine etc ■ Family history of premature heart
+■ Medicines that the patient is taking disease or stroke in first degree relatives
+■ Current tobacco use (yes/no) (answer
+yes if
+
+[4] p.121 | score=0.3333
+limitations,
+the mean cholesterol value for the population can be used.
+■ Before applying the chart to estimate the 10 year cardiovascular
+risk of an individual, the following information is necessary:
+■ Presence or absence of diabetes6
+■ Gender
+■ Smoker or non-smoker7
+■ Age
+■ Systolic blood pressure (SBP)8
+■ Total blood cholesterol9 (if in mg/dl divide by 38 to convert to
+mmol/l).
+6 A person who has diabetes is defined as someone taking insulin or oral hypogly-
+caemic drugs, or with a fasting p
+
+[5] p.122 | score=0.2500
+0-59 years select 50, if 60-69
+years select 60 etc)
+Step 5 Within this box find the nearest cell where the individuals sys-
+tolic blood pressure (mm Hg) and total blood cholesterol level
+(mmol/l) cross. The colour of this cell determines the 10 year
+cardiovascular risk.
+Practice points
+Please note that CVD risk may be higher than indicated by the charts
+in the presence of the following:
+■ already on antihypertensive therapy
+■ premature menopause
+■ approaching the next age category or systolic bl

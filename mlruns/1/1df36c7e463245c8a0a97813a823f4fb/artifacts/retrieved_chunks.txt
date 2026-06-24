@@ -1,0 +1,62 @@
+[1] p.20 | score=1.0000
+Package of essential noncommunicable (PEN) disease interventions for primary health care in low-resource settings
+Who Pen Protocol 3
+3.1 Management of Asthma
+3.2 Management of Chronic obstructive Pulmonary Disease (CoPD)
+Asthma and COPD can both present with cough,
+ASK
+difficult breathing, tight chest and/or wheezing
+The following features make a The following features make a
+diagnosis of asthma more likely: diagnosis of COPD more likely:
+■ previous diagnosis of asthma; ■ previous diagnosis of C
+
+[2] p.5 | score=0.5333
+care in low-resource settings 54
+Abbreviations 55
+Executive summary 56
+Recommendations 58
+Management of stable asthma 58
+Management of exacerbation of asthma 59
+Management of stable COPD 60
+Management of exacerbation of COPD 62
+Methodology used to prepare the guideline 68
+Annex 3 - PICOT questions 74
+Asthma 74
+COPD 78
+Annex VII - Summary of recommendations 80
+Diagnosis and management of asthma 80
+Diagnosis and management of COPD 83
+
+[3] p.157 | score=0.3333
+elf-monitoring of blood coagulation and self-adjustment of dosage Weak Moderate
+in patients receiving oral anticoagulation agents is recommended
+if affordable and according to an agreed action plan with a health
+professional.
+6.2 Self-monitoring in asthma and COPD and self-adjustment of dosage Weak Very low
+is recommended according to an agreed action plan with a health
+professional.
+6.3 Self-adjustment of diuretics based on body weight monitoring in heart Weak Very low
+failure is not recommende
+
+[4] p.83 | score=0.3095
+ent and is at risk of dying from asthma.
+Diagnosis and management of COPD
+Stable COPD
+Diagnosis
+Both asthma and COPD can present with cough, difficult breathing,
+tight chest and/or wheezing.
+If there is diagnostic uncertainty, the following features favour COPD:
+■ previous diagnosis of COPD;
+■ history of heavy smoking, i.e. >20 cigarettes per day for >15 years;
+■ history of heavy and prolonged exposure to burning fossil fuels in an
+enclosed space, or high exposure to dust in an occupational sett
+
+[5] p.71 | score=0.2500
+years; human being only; English language; systematic reviews.
+As a result of the AMSTAR quality assessment of the found system-
+atic reviews, nine systematic reviews for asthma and 14 systematic
+reviews for COPD PICOT questions were selected (Annex 6).
+Evidence profiles based on the systematic reviews were created
+using the GRADE methodology (Annex 4). Using this approach,
+assessments of the quality of evidence for each important outcome
+took into account the study design, limitations of the s

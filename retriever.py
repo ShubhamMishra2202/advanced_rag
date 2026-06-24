@@ -1,21 +1,42 @@
-"""Embed query and search Qdrant."""
+"""Embed query and search Qdrant (hybrid dense + sparse BM25 with RRF fusion)."""
 import logging
 from qdrant_client import QdrantClient
-from embed import encode
+from qdrant_client.models import Prefetch, FusionQuery, Fusion, SparseVector
+from embed import encode, encode_sparse
 from ingestion import COLLECTION
 
 log = logging.getLogger(__name__)
 CLIENT = QdrantClient(url="http://localhost:6333")
 
 
-def search(query: str, *, top_k: int = 5) -> list[dict]:
-    log.info("Searching | top_k=%d | query: %s", top_k, query[:120])
-    hits = CLIENT.query_points(
-        collection_name=COLLECTION,
-        query=encode([query])[0],
-        limit=top_k,
-        with_payload=True,
-    ).points
+def search(query: str, *, top_k: int = 5, mode: str = "hybrid") -> list[dict]:
+    log.info("Searching (%s) | top_k=%d | query: %s", mode, top_k, query[:120])
+    dense_vec = encode([query])[0]
+
+    if mode == "dense":
+        hits = CLIENT.query_points(
+            collection_name=COLLECTION,
+            query=dense_vec,
+            using="dense",
+            limit=top_k,
+            with_payload=True,
+        ).points
+    else:
+        sparse_indices, sparse_values = encode_sparse([query])[0]
+        hits = CLIENT.query_points(
+            collection_name=COLLECTION,
+            prefetch=[
+                Prefetch(query=dense_vec, using="dense", limit=20),
+                Prefetch(
+                    query=SparseVector(indices=sparse_indices, values=sparse_values),
+                    using="sparse",
+                    limit=20,
+                ),
+            ],
+            query=FusionQuery(fusion=Fusion.RRF),
+            limit=top_k,
+            with_payload=True,
+        ).points
     results = [
         {
             "score": h.score,
