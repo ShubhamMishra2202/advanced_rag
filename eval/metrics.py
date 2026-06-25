@@ -85,6 +85,7 @@ def run_similarity_eval(
     top_k: int = 5,
     limit: int = 0,
     gt_sim_threshold: float = 0.5,
+    mode: str = "hybrid",
 ) -> dict[str, Any]:
     """Batch similarity eval over a JSON dataset.
 
@@ -106,7 +107,7 @@ def run_similarity_eval(
     max_gt_sims: list[float] = []
 
     for row in rows:
-        hits = search(row["query"], top_k=top_k)
+        hits = search(row["query"], top_k=top_k, mode=mode)
         if not hits:
             top1_scores.append(0.0)
             max_gt_sims.append(0.0)
