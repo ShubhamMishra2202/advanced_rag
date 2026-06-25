@@ -18,6 +18,37 @@ CHUNK_SIZE    = 500
 CHUNK_OVERLAP = 80
 CLIENT = QdrantClient(url="http://localhost:6333")
 
+# Boilerplate running header present on almost every page of this PDF
+_RUNNING_HEADER = (
+    "Package of essential noncommunicable (PEN) disease interventions "
+    "for primary health care in low-resource settings"
+)
+
+
+def _is_toc_page(text: str) -> bool:
+    """True when >35% of non-empty lines are bare page numbers — i.e. a TOC page."""
+    lines = [l.strip() for l in text.split("\n") if l.strip()]
+    if len(lines) < 5:
+        return False
+    digit_lines = sum(1 for l in lines if re.fullmatch(r"\d+", l))
+    return digit_lines / len(lines) > 0.35
+
+
+def _is_bibliography_page(text: str) -> bool:
+    """True when the page is a search-strategy or bibliography section."""
+    lower = text.lower()
+    return "systematic reviews" in lower and any(
+        kw in lower for kw in ("english language", "amstar", "search strategy", "mesh")
+    )
+
+
+def _clean_page(text: str) -> str:
+    """Strip the running header and collapse excess blank lines."""
+    text = text.replace(_RUNNING_HEADER, "")
+    # Collapse 3+ consecutive blank lines to 2
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
 
 def _ensure_collection(recreate: bool) -> None:
     if recreate and CLIENT.collection_exists(COLLECTION):
@@ -85,12 +116,34 @@ def ingest(pdf_path: str | Path, *, recreate: bool = False) -> int:
             log.debug("No printed page number on PDF index %d — using PDF index", pdf_idx)
             page_numbers.append(pdf_idx)
 
+    # ── Structural page filtering ────────────────────────────────────────────
+    filtered_pages: list[tuple[int, str]] = []
+    skipped_toc = skipped_bib = skipped_empty = 0
+    for page_num, page_text in zip(page_numbers, pages):
+        if not page_text.strip():
+            skipped_empty += 1
+            continue
+        if _is_toc_page(page_text):
+            log.debug("Skipping TOC page p.%d", page_num)
+            skipped_toc += 1
+            continue
+        if _is_bibliography_page(page_text):
+            log.debug("Skipping bibliography page p.%d", page_num)
+            skipped_bib += 1
+            continue
+        filtered_pages.append((page_num, _clean_page(page_text)))
+
+    log.info(
+        "Page filter: kept %d / %d pages | skipped toc=%d bib=%d empty=%d",
+        len(filtered_pages), len(pages), skipped_toc, skipped_bib, skipped_empty,
+    )
+
     rows: list[tuple[int, int, str]] = [
         (page_num, para_idx, chunk)
-        for page_num, page_text in zip(page_numbers, pages)
+        for page_num, page_text in filtered_pages
         for para_idx, chunk in enumerate(_chunk(page_text), start=1)
     ]
-    log.info("Created %d chunk(s) across %d page(s)", len(rows), len(pages))
+    log.info("Created %d chunk(s) across %d page(s)", len(rows), len(filtered_pages))
     if not rows:
         log.warning("No chunks produced — aborting ingest")
         return 0

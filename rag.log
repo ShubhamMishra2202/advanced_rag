@@ -1948,3 +1948,494 @@
 2026-06-25 16:58:27 | INFO     | retriever |   [3] score=0.3333 | Medical_document_advance_rag.pdf p.16 para=3 | requency and amount) ■ Angina, breathlessness on exertion ■ Occupation (sedentar
 2026-06-25 16:58:27 | INFO     | retriever |   [4] score=0.3333 | Medical_document_advance_rag.pdf p.121 para=3 | limitations, the mean cholesterol value for the population can be used. ■ Before
 2026-06-25 16:58:27 | INFO     | retriever |   [5] score=0.2500 | Medical_document_advance_rag.pdf p.122 para=2 | 0-59 years select 50, if 60-69 years select 60 etc) Step 5 Within this box find 
+2026-06-25 17:30:18 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-06-25 17:30:18 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-06-25 17:30:19 | INFO     | __main__ | === advanced_rag | MODE=ingest | retrieval=hybrid ===
+2026-06-25 17:30:19 | INFO     | ingestion | Ingesting PDF: /home/shubhammishra/Desktop/Personal/advanced_rag/data/Medical_document_advance_rag.pdf
+2026-06-25 17:30:19 | INFO     | httpx | HTTP Request: GET http://localhost:6333/collections/advanced_rag/exists "HTTP/1.1 200 OK"
+2026-06-25 17:30:19 | WARNING  | ingestion | recreate=True — dropping existing collection 'advanced_rag'
+2026-06-25 17:30:19 | INFO     | httpx | HTTP Request: DELETE http://localhost:6333/collections/advanced_rag "HTTP/1.1 200 OK"
+2026-06-25 17:30:19 | INFO     | httpx | HTTP Request: GET http://localhost:6333/collections/advanced_rag/exists "HTTP/1.1 200 OK"
+2026-06-25 17:30:19 | INFO     | ingestion | Creating collection 'advanced_rag' (dense=384-d COSINE, sparse=BM25)
+2026-06-25 17:30:19 | INFO     | httpx | HTTP Request: PUT http://localhost:6333/collections/advanced_rag "HTTP/1.1 200 OK"
+2026-06-25 17:32:14 | INFO     | ingestion | Extracted text from 210 page(s)
+2026-06-25 17:32:14 | WARNING  | ingestion | 4 page(s) yielded no text (images/scans?)
+2026-06-25 17:32:14 | INFO     | ingestion | Page filter: kept 195 / 210 pages | skipped toc=1 bib=10 empty=4
+2026-06-25 17:32:14 | INFO     | ingestion | Created 946 chunk(s) across 195 page(s)
+2026-06-25 17:32:14 | INFO     | embed | Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-06-25 17:32:14 | INFO     | embed | Embedding model loaded (vector size=384)
+2026-06-25 17:32:37 | INFO     | embed | Loading sparse embedding model: Qdrant/bm25
+2026-06-25 17:32:38 | INFO     | embed | Sparse embedding model loaded
+2026-06-25 17:32:38 | INFO     | httpx | HTTP Request: PUT http://localhost:6333/collections/advanced_rag/points?wait=true "HTTP/1.1 200 OK"
+2026-06-25 17:32:38 | INFO     | ingestion | Ingest complete — 946 point(s) upserted into 'advanced_rag'
+2026-06-25 17:32:39 | INFO     | __main__ | Ingest finished — 946 chunk(s) indexed
+2026-06-25 17:32:50 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-06-25 17:32:50 | INFO     | __main__ | [1/29] dense | id=4 | How does WHO PEN contribute to health system building blocks
+2026-06-25 17:32:50 | INFO     | retriever | Searching (dense) | top_k=5 | query: How does WHO PEN contribute to health system building blocks according to the document?
+2026-06-25 17:32:50 | INFO     | embed | Loading embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | embed | Embedding model loaded (vector size=384)
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.6224 | Medical_document_advance_rag.pdf p.10 para=1 | Table ii: Contribution of WHO PEN to Health System Building Blocks* Leadership/g
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.6085 | Medical_document_advance_rag.pdf p.8 para=2 | th systems. WHO PEN is the minimum standard for NCDs to strengthen national capa
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.6011 | Medical_document_advance_rag.pdf p.210 para=3 | onstrained settings to attain the global voluntary tar- gets related to reductio
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.5844 | Medical_document_advance_rag.pdf p.210 para=1 | Implementation tools Package of Essential Noncommunicable (PEN) disease interven
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.5794 | Medical_document_advance_rag.pdf p.8 para=3 | rage reforms to ensure that health systems contribute to health equity, social j
+2026-06-25 17:32:51 | INFO     | __main__ | [2/29] dense | id=8 | What is the '5 A's' tobacco cessation framework described in
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: What is the '5 A's' tobacco cessation framework described in Protocol 2, and what happens at each step?
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.5646 | Medical_document_advance_rag.pdf p.19 para=2 | now.” A3: ASSESS Are you willing to make a quit attempt now ? YES NO Assist in p
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.5389 | Medical_document_advance_rag.pdf p.19 para=1 | I. Protocols for primary care Reinforce message that Do you use A1: ASK NO tobac
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.5163 | Medical_document_advance_rag.pdf p.202 para=2 | ons US United States WHO World Health Organization WHO PEN WHO Package of Essent
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.4868 | Medical_document_advance_rag.pdf p.183 para=4 | s that were considered necessary at differ- ent stages of policy development whe
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.4781 | Medical_document_advance_rag.pdf p.182 para=1 | ■ policy development (Year 2) ■ partial implementation (Years 3-5) ■ full implem
+2026-06-25 17:32:51 | INFO     | __main__ | [3/29] dense | id=9 | What clinical features distinguish asthma from COPD accordin
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: What clinical features distinguish asthma from COPD according to Protocol 3?
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.7865 | Medical_document_advance_rag.pdf p.20 para=1 | Who Pen Protocol 3 3.1 Management of Asthma 3.2 Management of Chronic obstructiv
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.7055 | Medical_document_advance_rag.pdf p.5 para=5 | thma 58 Management of exacerbation of asthma 59 Management of stable COPD 60 Man
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.6597 | Medical_document_advance_rag.pdf p.80 para=1 | Annex VII Summary of recommendations Diagnosis and management of asthma Stable a
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.6564 | Medical_document_advance_rag.pdf p.83 para=2 | ent and is at risk of dying from asthma. Diagnosis and management of COPD Stable
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.6528 | Medical_document_advance_rag.pdf p.20 para=4 | e (PEFR) ■ Give two puffs of salbutamol and remeasure in 15 minutes TEST ■ If th
+2026-06-25 17:32:51 | INFO     | __main__ | [4/29] dense | id=12 | What symptoms warrant speculum examination and immediate ref
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: What symptoms warrant speculum examination and immediate referral versus follow-up for cervical cancer?
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.7749 | Medical_document_advance_rag.pdf p.25 para=1 | I. Protocols for primary care Who Pen Protocol 4 4.2 Assessment and referral of 
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.7483 | Medical_document_advance_rag.pdf p.52 para=1 | Figure 3: Assessment and referral of women with suspected cervical cancer at pri
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.7305 | Medical_document_advance_rag.pdf p.50 para=1 | Referral of women with suspected cervical cancer What are the signs and symptoms
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.7274 | Medical_document_advance_rag.pdf p.51 para=2 | ort any gynaecological sign or symptom suspicious of early cervical cancer (such
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.6906 | Medical_document_advance_rag.pdf p.35 para=1 | Guidelines for referral of suspected breast and cervical cancer at primary healt
+2026-06-25 17:32:51 | INFO     | __main__ | [5/29] dense | id=13 | Why does the Guideline Development Group provide distinct re
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: Why does the Guideline Development Group provide distinct recommendations by age group for breast and cervical cancer, a
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.7850 | Medical_document_advance_rag.pdf p.33 para=1 | Guidelines for referral of suspected breast and cervical cancer at primary healt
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.6646 | Medical_document_advance_rag.pdf p.39 para=5 | that are relevant to consider in a low-resource primary health-care setting.4 Ev
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.6462 | Medical_document_advance_rag.pdf p.33 para=2 | rations. Women aged 30 years and older have the highest risk of developing breas
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.6279 | Medical_document_advance_rag.pdf p.32 para=1 | Executive Summary The Guidelines for referral of suspected breast and cervical c
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.6233 | Medical_document_advance_rag.pdf p.41 para=3 | services. They will will be updated within the next 5 years as it is intended to
+2026-06-25 17:32:51 | INFO     | __main__ | [6/29] dense | id=14 | What is the relationship between the cancer referral guideli
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: What is the relationship between the cancer referral guidelines and the WHO Comprehensive Cervical Cancer Control guide 
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.7360 | Medical_document_advance_rag.pdf p.32 para=4 | referral cases. Due to the brief nature of the guidelines, they can be easily an
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.7310 | Medical_document_advance_rag.pdf p.37 para=5 | symptoms, signs, and risk factors associated with early diagnosis of breast and 
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.7103 | Medical_document_advance_rag.pdf p.32 para=1 | Executive Summary The Guidelines for referral of suspected breast and cervical c
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.6965 | Medical_document_advance_rag.pdf p.33 para=1 | Guidelines for referral of suspected breast and cervical cancer at primary healt
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.6922 | Medical_document_advance_rag.pdf p.41 para=1 | Guidelines for referral of suspected breast and cervical cancer at primary healt
+2026-06-25 17:32:51 | INFO     | __main__ | [7/29] dense | id=17 | Why is intravenous aminophylline NOT recommended for routine
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: Why is intravenous aminophylline NOT recommended for routine use in asthma exacerbations, and what is the exception?
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.7572 | Medical_document_advance_rag.pdf p.67 para=1 | Management of asthma and chronic obstructive pulmonary disease in primary health
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.7059 | Medical_document_advance_rag.pdf p.64 para=7 | n the basis of the balance between benefits and risks and because the risks outw
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.6397 | Medical_document_advance_rag.pdf p.62 para=2 | s of inhaled salbutamol should be administered via a nebulizer or spacer. * (Str
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.6117 | Medical_document_advance_rag.pdf p.83 para=1 | Management of asthma and chronic obstructive pulmonary disease in primary health
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.5955 | Medical_document_advance_rag.pdf p.60 para=3 | nce) REC 6: Intravenous salbutamol: on the basis of the balance between benefits
+2026-06-25 17:32:51 | INFO     | __main__ | [8/29] dense | id=18 | What medications are explicitly NOT recommended for stable C
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: What medications are explicitly NOT recommended for stable COPD management and why?
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.7332 | Medical_document_advance_rag.pdf p.72 para=5 | tobacco or overweight control. Advice regarding these risk factors would be bene
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.6807 | Medical_document_advance_rag.pdf p.66 para=1 | Recommendation Benefits/risks; values and acceptability; cost; feasibility Manag
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.6738 | Medical_document_advance_rag.pdf p.62 para=1 | Management of exacerbation of COPD REC 1: Antibiotics should be given for COPD e
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.6721 | Medical_document_advance_rag.pdf p.61 para=1 | Management of asthma and chronic obstructive pulmonary disease in primary health
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.6616 | Medical_document_advance_rag.pdf p.60 para=5 | oving symptoms in patients with stable COPD. Patients should be prescribed beta 
+2026-06-25 17:32:51 | INFO     | __main__ | [9/29] dense | id=20 | Why is oxygen concentration limited to 24-28% for COPD exace
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: Why is oxygen concentration limited to 24-28% for COPD exacerbations but not similarly restricted for asthma?
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.6889 | Medical_document_advance_rag.pdf p.66 para=5 | D where available. Administration either by MDI and spacer or by nebulization is
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.6639 | Medical_document_advance_rag.pdf p.5 para=5 | thma 58 Management of exacerbation of asthma 59 Management of stable COPD 60 Man
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.6327 | Medical_document_advance_rag.pdf p.65 para=1 | Management of asthma and chronic obstructive pulmonary disease in primary health
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.6145 | Medical_document_advance_rag.pdf p.54 para=1 | Management of asthma and chronic obstructive pulmonary disease in primary health
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.6122 | Medical_document_advance_rag.pdf p.67 para=1 | Management of asthma and chronic obstructive pulmonary disease in primary health
+2026-06-25 17:32:51 | INFO     | __main__ | [10/29] dense | id=23 | What is the evidence basis for recommending metformin as fir
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: What is the evidence basis for recommending metformin as first-line therapy, and what are its contraindications?
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.7197 | Medical_document_advance_rag.pdf p.104 para=1 | There are fewer trials that compared metformin and sulfonylurea and examined imp
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.6897 | Medical_document_advance_rag.pdf p.102 para=1 | Recommendation 1. Metformin can be used as a first-line oral hypoglycaemic agent
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.6688 | Medical_document_advance_rag.pdf p.101 para=7 | Question: Can metformin be used as first-line oral hypoglycaemic agent in patien
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.6636 | Medical_document_advance_rag.pdf p.102 para=5 | view did include patients with at least one of the standard contraindications fo
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.6487 | Medical_document_advance_rag.pdf p.103 para=5 | indications to metformin, or in whom metformin does not improve glycaemic contro
+2026-06-25 17:32:51 | INFO     | __main__ | [11/29] dense | id=24 | How do metformin and sulfonylureas compare in terms of glyca
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: How do metformin and sulfonylureas compare in terms of glycaemic control, mortality outcomes, and hypoglycaemia risk?
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.7787 | Medical_document_advance_rag.pdf p.87 para=5 | lled by diet only and who do not have renal insufficiency, liver disease or hypo
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.7648 | Medical_document_advance_rag.pdf p.104 para=1 | There are fewer trials that compared metformin and sulfonylurea and examined imp
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.7564 | Medical_document_advance_rag.pdf p.103 para=4 | that metformin lowers blood glucose, as measured by HbA1c. The evidence on other
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.7254 | Medical_document_advance_rag.pdf p.103 para=5 | indications to metformin, or in whom metformin does not improve glycaemic contro
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.7065 | Medical_document_advance_rag.pdf p.103 para=3 | Ts and the risk was found to be increased. Metformin vs placebo Six RCTs recorde
+2026-06-25 17:32:51 | INFO     | __main__ | [12/29] dense | id=26 | What evidence supports giving statins to all diabetic patien
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: What evidence supports giving statins to all diabetic patients aged 40 and over, and what are the contraindications?
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.7323 | Medical_document_advance_rag.pdf p.105 para=4 | ly mild adverse events (52). Much of statins’ therapeutic effect is believed to 
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.7017 | Medical_document_advance_rag.pdf p.106 para=4 | ascular changes. The meta-analysis included large trials that included diabetic 
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.6997 | Medical_document_advance_rag.pdf p.106 para=1 | Table 3. Statins used in clinical trials with diabetic patients included in the 
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.6905 | Medical_document_advance_rag.pdf p.107 para=1 | Diagnosis and management of type 2 diabetes in primary health care in low-resour
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.6902 | Medical_document_advance_rag.pdf p.106 para=6 | , ASCOT-LLA, HPS). Separate synthesis was not presented for people with diabetes
+2026-06-25 17:32:51 | INFO     | __main__ | [13/29] dense | id=27 | What specific foot care and retinopathy screening recommenda
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: What specific foot care and retinopathy screening recommendations exist for diabetic patients?
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.6587 | Medical_document_advance_rag.pdf p.111 para=3 | re foot infection and/or foot ulcers should be referred to the next level of car
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.6462 | Medical_document_advance_rag.pdf p.88 para=4 | spection, pin-prick sensation) ■ Quality of evidence: low ■ Strength of recommen
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.6402 | Medical_document_advance_rag.pdf p.111 para=5 | h of recommendation: conditional This recommendation is based on data from devel
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.6038 | Medical_document_advance_rag.pdf p.112 para=1 | interval ranged from one to four years. A one-year screening interval is unlikel
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.5979 | Medical_document_advance_rag.pdf p.19 para=3 | y the ophthalmologist ■ Avoid walking barefoot or without socks ■ Wash feet in l
+2026-06-25 17:32:51 | INFO     | __main__ | [14/29] dense | id=28 | What are the emergency management protocols for hypoglycaemi
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: What are the emergency management protocols for hypoglycaemia and hyperglycaemia in diabetic patients?
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.6567 | Medical_document_advance_rag.pdf p.112 para=5 | entially life-threatening (82). The functional brain failure caused by hypogly- 
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.6274 | Medical_document_advance_rag.pdf p.113 para=1 | Diagnosis and management of type 2 diabetes in primary health care in low-resour
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.6254 | Medical_document_advance_rag.pdf p.89 para=1 | Diagnosis and management of type 2 diabetes in primary health care in low-resour
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.6041 | Medical_document_advance_rag.pdf p.113 para=3 | commendation (81). Parenteral therapy is necessary when the patient is unable or
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.5951 | Medical_document_advance_rag.pdf p.149 para=6 | re, blood glucose, peak flow etc.). Whilst these measures can be undertaken in t
+2026-06-25 17:32:51 | INFO     | __main__ | [15/29] dense | id=31 | Under what conditions can drug therapy decisions be made bef
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: Under what conditions can drug therapy decisions be made before formally grading cardiovascular risk using the charts?
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.7686 | Medical_document_advance_rag.pdf p.117 para=4 | charts (see CD and table 1) enable the estimation of total cardiovascular risk o
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.7310 | Medical_document_advance_rag.pdf p.120 para=1 | Assessing and managing cardiovascular risk in people with risk factors who have 
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.6991 | Medical_document_advance_rag.pdf p.121 para=2 | tools to help identify those at high cardiovascular risk, and to motivate patien
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.6666 | Medical_document_advance_rag.pdf p.117 para=5 | ation using risk charts is not required for making treatment decisions in them. 
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.6453 | Medical_document_advance_rag.pdf p.4 para=3 | source needs 118 What are the goals of implementation? 118 Who needs referral to
+2026-06-25 17:32:51 | INFO     | __main__ | [16/29] dense | id=32 | What factors can make the actual cardiovascular risk higher 
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: What factors can make the actual cardiovascular risk higher than indicated by the WHO/ISH charts?
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.7016 | Medical_document_advance_rag.pdf p.117 para=4 | charts (see CD and table 1) enable the estimation of total cardiovascular risk o
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.6662 | Medical_document_advance_rag.pdf p.123 para=1 | Prevention of Cardiovascular Disease Table 1. List of WHO/ISH risk prediction ch
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.6459 | Medical_document_advance_rag.pdf p.17 para=4 | ■ Risk charts underestimate the risk in 60 etc., for people age < 40 years selec
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.6444 | Medical_document_advance_rag.pdf p.121 para=2 | tools to help identify those at high cardiovascular risk, and to motivate patien
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.6381 | Medical_document_advance_rag.pdf p.120 para=3 | (>160–170/100–105 mmHg) ■ with type 1 or 2 diabetes, with overt nephropathy or o
+2026-06-25 17:32:51 | INFO     | __main__ | [17/29] dense | id=35 | Why did the guideline development group find it difficult to
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: Why did the guideline development group find it difficult to make strong recommendations either for or against most self
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.6483 | Medical_document_advance_rag.pdf p.4 para=5 | s 141 Formulation of recommendations 142 Peer review 143 Declarations of Interes
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.6217 | Medical_document_advance_rag.pdf p.143 para=1 | III. Self-care of cardiovascular disease, diabetes and chronic respiratory disea
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.6189 | Medical_document_advance_rag.pdf p.136 para=3 | eflect the diversity of health care systems, their context and be sensitive to t
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.6135 | Medical_document_advance_rag.pdf p.142 para=1 | Formulation of recommendations The Guideline Development Group (Appendix 3) met 
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.6091 | Medical_document_advance_rag.pdf p.91 para=3 | used by health care staff in primary care units in low-resource settings. A guid
+2026-06-25 17:32:51 | INFO     | __main__ | [18/29] dense | id=36 | What are the nine self-care research questions addressed by 
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: What are the nine self-care research questions addressed by the guideline, and what methodological approach was used?
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.6125 | Medical_document_advance_rag.pdf p.136 para=5 | ase, and maintain health and to cope with illness and disability with or without
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.6109 | Medical_document_advance_rag.pdf p.5 para=1 | Question 2: In patients with non-communicable diseases do lay led self-managemen
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.6011 | Medical_document_advance_rag.pdf p.4 para=5 | s 141 Formulation of recommendations 142 Peer review 143 Declarations of Interes
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.5971 | Medical_document_advance_rag.pdf p.130 para=2 | namely: cardio- vascular disease, diabetes, cancer and chronic respiratory disea
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.5926 | Medical_document_advance_rag.pdf p.137 para=2 | healthy, both physically and mentally, avoiding hazards such as smoking and impr
+2026-06-25 17:32:51 | INFO     | __main__ | [19/29] dense | id=38 | What is the definition of self-treatment intervention and ho
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: What is the definition of self-treatment intervention and how does it differ from self-monitoring?
+2026-06-25 17:32:51 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:51 | INFO     | retriever |   [1] score=0.7345 | Medical_document_advance_rag.pdf p.133 para=1 | III. Self-care of cardiovascular disease, diabetes and chronic respiratory disea
+2026-06-25 17:32:51 | INFO     | retriever |   [2] score=0.6942 | Medical_document_advance_rag.pdf p.155 para=1 | III. Self-care of cardiovascular disease, diabetes and chronic respiratory disea
+2026-06-25 17:32:51 | INFO     | retriever |   [3] score=0.6480 | Medical_document_advance_rag.pdf p.157 para=5 | self-monitoring and self-adjustment of treatments, particularly in LMIC. The res
+2026-06-25 17:32:51 | INFO     | retriever |   [4] score=0.6471 | Medical_document_advance_rag.pdf p.130 para=3 | ) to preserve health or respond to symptoms. Self-care involves the entire body 
+2026-06-25 17:32:51 | INFO     | retriever |   [5] score=0.6294 | Medical_document_advance_rag.pdf p.137 para=2 | healthy, both physically and mentally, avoiding hazards such as smoking and impr
+2026-06-25 17:32:51 | INFO     | __main__ | [20/29] dense | id=41 | What are the five core parameters used in the NCD costing to
+2026-06-25 17:32:51 | INFO     | retriever | Searching (dense) | top_k=5 | query: What are the five core parameters used in the NCD costing tool to estimate scale-up costs, and how do they interact?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.6886 | Medical_document_advance_rag.pdf p.204 para=2 | ating costs is shown in the green-shaded column. This column is calculated autom
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.6748 | Medical_document_advance_rag.pdf p.204 para=6 | and human resources), if necessary. The Costing Tool provides the option to sele
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.6401 | Medical_document_advance_rag.pdf p.203 para=3 | pen and read the Costing Tool – User Guide (Word document). 3. Open the NCDs Cos
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.6255 | Medical_document_advance_rag.pdf p.185 para=6 | inflation). Resource-use profiles and unit cost values can be amended by coun- t
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.5969 | Medical_document_advance_rag.pdf p.192 para=2 | preventive measures, the estimated cost of scalingup differs according to countr
+2026-06-25 17:32:52 | INFO     | __main__ | [21/29] dense | id=42 | What distinguishes a 'best buy' intervention from a 'good bu
+2026-06-25 17:32:52 | INFO     | retriever | Searching (dense) | top_k=5 | query: What distinguishes a 'best buy' intervention from a 'good buy' intervention according to the costing methodology?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.6534 | Medical_document_advance_rag.pdf p.201 para=2 | r, given that implementation coverage of best buy strategies is still very modes
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.6420 | Medical_document_advance_rag.pdf p.191 para=5 | on per annum, ranging from US$2 billion in 2011 to US$ 11.5 billion by 2025 (Fig
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.6355 | Medical_document_advance_rag.pdf p.190 para=5 | gure 8). Figure 8. Total estimated cost of scaling up individual-based best buy 
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.6346 | Medical_document_advance_rag.pdf p.190 para=6 | st per capita of scaling up best buy interventions for NCD risk factors in low- 
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.6232 | Medical_document_advance_rag.pdf p.197 para=6 | an umbrella term that covers many preventable and treatable conditions (as oppos
+2026-06-25 17:32:52 | INFO     | __main__ | [22/29] dense | id=43 | How many countries were included in the costing analysis, wh
+2026-06-25 17:32:52 | INFO     | retriever | Searching (dense) | top_k=5 | query: How many countries were included in the costing analysis, what was the selection criteria, and how were total costs extr
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.6104 | Medical_document_advance_rag.pdf p.175 para=3 | y are summarized in Box 1. The purpose is to identify the actual budgetary resou
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.5958 | Medical_document_advance_rag.pdf p.185 para=6 | inflation). Resource-use profiles and unit cost values can be amended by coun- t
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.5883 | Medical_document_advance_rag.pdf p.204 para=6 | and human resources), if necessary. The Costing Tool provides the option to sele
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.5868 | Medical_document_advance_rag.pdf p.175 para=5 | d. Total versus incremental costing: The total cost for a given year is calculat
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.5762 | Medical_document_advance_rag.pdf p.198 para=5 | need at country level. Nevertheless, this is an area where there is little repor
+2026-06-25 17:32:52 | INFO     | __main__ | [23/29] dense | id=44 | What default coverage rates were assumed for current and tar
+2026-06-25 17:32:52 | INFO     | retriever | Searching (dense) | top_k=5 | query: What default coverage rates were assumed for current and target intervention coverage in the costing model?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.6554 | Medical_document_advance_rag.pdf p.181 para=3 | -dose) coverage (WHO, 2010b). In 33 of the 42 countries in this study, coverage 
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.6469 | Medical_document_advance_rag.pdf p.204 para=6 | and human resources), if necessary. The Costing Tool provides the option to sele
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.6393 | Medical_document_advance_rag.pdf p.176 para=5 | 0 000 times US$1 times 10%); once scaled up to a higher desired level of coverag
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.6187 | Medical_document_advance_rag.pdf p.204 para=3 | or conditions. ■ Increase/decrease of target coverage levels for selected inter 
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.5698 | Medical_document_advance_rag.pdf p.204 para=2 | ating costs is shown in the green-shaded column. This column is calculated autom
+2026-06-25 17:32:52 | INFO     | __main__ | [24/29] dense | id=46 | What methodology was used across the different guideline sec
+2026-06-25 17:32:52 | INFO     | retriever | Searching (dense) | top_k=5 | query: What methodology was used across the different guideline sections and how was evidence quality assessed?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.6482 | Medical_document_advance_rag.pdf p.142 para=1 | Formulation of recommendations The Guideline Development Group (Appendix 3) met 
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.6113 | Medical_document_advance_rag.pdf p.69 para=4 | e guideline expert panel meeting, the members were asked to identify critical cl
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.6024 | Medical_document_advance_rag.pdf p.70 para=3 | re extensive debates and involvement of many stakeholders. After the guideline e
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.6011 | Medical_document_advance_rag.pdf p.72 para=2 | which are analysed by WHO. The peer reviewers were asked to com- ment primarily 
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.5812 | Medical_document_advance_rag.pdf p.69 para=6 | d values, and preferences. Recommendations were classified as strong or weak, as
+2026-06-25 17:32:52 | INFO     | __main__ | [25/29] dense | id=47 | What measurements should all people aged 40+ years have acco
+2026-06-25 17:32:52 | INFO     | retriever | Searching (dense) | top_k=5 | query: What measurements should all people aged 40+ years have according to the diabetes guideline development group?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.7445 | Medical_document_advance_rag.pdf p.98 para=1 | Recommendations and evidence A. Diagnosing diabetes Diabetes is diagnosed by lab
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.5966 | Medical_document_advance_rag.pdf p.17 para=4 | ■ Risk charts underestimate the risk in 60 etc., for people age < 40 years selec
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.5684 | Medical_document_advance_rag.pdf p.6 para=2 | , Search strategies, References, Members of the Guideline Development Group 3. D
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.5682 | Medical_document_advance_rag.pdf p.121 para=3 | limitations, the mean cholesterol value for the population can be used. ■ Before
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.5624 | Medical_document_advance_rag.pdf p.149 para=6 | re, blood glucose, peak flow etc.). Whilst these measures can be undertaken in t
+2026-06-25 17:32:52 | INFO     | __main__ | [26/29] dense | id=48 | What specific complications does WHO PEN aim to prevent thro
+2026-06-25 17:32:52 | INFO     | retriever | Searching (dense) | top_k=5 | query: What specific complications does WHO PEN aim to prevent through its integrated NCD management approach?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.6868 | Medical_document_advance_rag.pdf p.8 para=2 | th systems. WHO PEN is the minimum standard for NCDs to strengthen national capa
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.6140 | Medical_document_advance_rag.pdf p.8 para=1 | and the user-friendly nature of the tools that are been developed, will empower 
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.6024 | Medical_document_advance_rag.pdf p.204 para=5 | of the WHO Package of Essential NCD Interventions (WHO PEN) (for primary care in
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.5999 | Medical_document_advance_rag.pdf p.7 para=6 | educe rising health-care costs due to NCDs and their preventable complications. 
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.5875 | Medical_document_advance_rag.pdf p.10 para=1 | Table ii: Contribution of WHO PEN to Health System Building Blocks* Leadership/g
+2026-06-25 17:32:52 | INFO     | __main__ | [27/29] dense | id=49 | What are the key distinctions between financial and economic
+2026-06-25 17:32:52 | INFO     | retriever | Searching (dense) | top_k=5 | query: What are the key distinctions between financial and economic costing, and total versus incremental costing in the NCD co
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.7419 | Medical_document_advance_rag.pdf p.175 para=5 | d. Total versus incremental costing: The total cost for a given year is calculat
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.6492 | Medical_document_advance_rag.pdf p.175 para=3 | y are summarized in Box 1. The purpose is to identify the actual budgetary resou
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.6011 | Medical_document_advance_rag.pdf p.204 para=6 | and human resources), if necessary. The Costing Tool provides the option to sele
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.5576 | Medical_document_advance_rag.pdf p.203 para=2 | osting Tool Note: Throughout this worksheet and the rest of the Excel workbook, 
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.5561 | Medical_document_advance_rag.pdf p.203 para=3 | pen and read the Costing Tool – User Guide (Word document). 3. Open the NCDs Cos
+2026-06-25 17:32:52 | INFO     | __main__ | [28/29] dense | id=50 | What evidence exists for the glycaemic control threshold and
+2026-06-25 17:32:52 | INFO     | retriever | Searching (dense) | top_k=5 | query: What evidence exists for the glycaemic control threshold and its relationship to microvascular complications?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.6740 | Medical_document_advance_rag.pdf p.100 para=1 | Complications Trial (DCCT) has shown that better glycaemic control reduces the r
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.6514 | Medical_document_advance_rag.pdf p.99 para=4 | for the evidence was not produced. The rec- ommendation is based on studies of a
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.6202 | Medical_document_advance_rag.pdf p.101 para=5 | to be feasible in areas of low literacy and basic health services. Diabetes is a
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.5984 | Medical_document_advance_rag.pdf p.101 para=2 | caemic control, intentional weight loss) or not available (risk of chronic compl
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.5951 | Medical_document_advance_rag.pdf p.99 para=5 | s of randomized controlled trials designed to estimate the effects of more inten
+2026-06-25 17:32:52 | INFO     | __main__ | [29/29] dense | id=51 | A 45-year-old heavy smoker presents at a primary care clinic
+2026-06-25 17:32:52 | INFO     | retriever | Searching (dense) | top_k=5 | query: A 45-year-old heavy smoker presents at a primary care clinic with persistent cough, worsening breathlessness, a blood pr
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.6481 | Medical_document_advance_rag.pdf p.19 para=1 | I. Protocols for primary care Reinforce message that Do you use A1: ASK NO tobac
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.5950 | Medical_document_advance_rag.pdf p.20 para=1 | Who Pen Protocol 3 3.1 Management of Asthma 3.2 Management of Chronic obstructiv
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.5927 | Medical_document_advance_rag.pdf p.18 para=4 | the patient how to take it at home: ■ Strongly advise all smokers to stop smokin
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.5745 | Medical_document_advance_rag.pdf p.17 para=2 | ) or random blood sugar ≥11.i ■ Auscultate lungs (bilateral basal mmol/l (200 mg
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.5630 | Medical_document_advance_rag.pdf p.121 para=5 | test is positive a confirmatory blood glucose test need to be arranged to diagno
+2026-06-25 17:32:52 | INFO     | __main__ | [1/29] hybrid | id=4 | How does WHO PEN contribute to health system building blocks
+2026-06-25 17:32:52 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: How does WHO PEN contribute to health system building blocks according to the document?
+2026-06-25 17:32:52 | INFO     | embed | Loading sparse embedding model: Qdrant/bm25
+2026-06-25 17:32:52 | INFO     | embed | Sparse embedding model loaded
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.7500 | Medical_document_advance_rag.pdf p.10 para=1 | Table ii: Contribution of WHO PEN to Health System Building Blocks* Leadership/g
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.5769 | Medical_document_advance_rag.pdf p.7 para=6 | educe rising health-care costs due to NCDs and their preventable complications. 
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.5000 | Medical_document_advance_rag.pdf p.8 para=2 | th systems. WHO PEN is the minimum standard for NCDs to strengthen national capa
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.4000 | Medical_document_advance_rag.pdf p.8 para=1 | and the user-friendly nature of the tools that are been developed, will empower 
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.3095 | Medical_document_advance_rag.pdf p.8 para=3 | rage reforms to ensure that health systems contribute to health equity, social j
+2026-06-25 17:32:52 | INFO     | __main__ | [2/29] hybrid | id=8 | What is the '5 A's' tobacco cessation framework described in
+2026-06-25 17:32:52 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What is the '5 A's' tobacco cessation framework described in Protocol 2, and what happens at each step?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.5000 | Medical_document_advance_rag.pdf p.18 para=1 | WHO PEN Protocol 2 Health Education and Counseling on Healthy Behaviours (to be 
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.5000 | Medical_document_advance_rag.pdf p.19 para=2 | now.” A3: ASSESS Are you willing to make a quit attempt now ? YES NO Assist in p
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.3860 | Medical_document_advance_rag.pdf p.19 para=1 | I. Protocols for primary care Reinforce message that Do you use A1: ASK NO tobac
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.3333 | Medical_document_advance_rag.pdf p.21 para=3 | for adults and 100ug once or twice daily for children Step 3. Same as step 2, bu
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.3333 | Medical_document_advance_rag.pdf p.182 para=1 | ■ policy development (Year 2) ■ partial implementation (Years 3-5) ■ full implem
+2026-06-25 17:32:52 | INFO     | __main__ | [3/29] hybrid | id=9 | What clinical features distinguish asthma from COPD accordin
+2026-06-25 17:32:52 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What clinical features distinguish asthma from COPD according to Protocol 3?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=1.0000 | Medical_document_advance_rag.pdf p.20 para=1 | Who Pen Protocol 3 3.1 Management of Asthma 3.2 Management of Chronic obstructiv
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.5333 | Medical_document_advance_rag.pdf p.5 para=5 | thma 58 Management of exacerbation of asthma 59 Management of stable COPD 60 Man
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.3429 | Medical_document_advance_rag.pdf p.83 para=2 | ent and is at risk of dying from asthma. Diagnosis and management of COPD Stable
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.3333 | Medical_document_advance_rag.pdf p.157 para=3 | elf-monitoring of blood coagulation and self-adjustment of dosage Weak Moderate 
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.2500 | Medical_document_advance_rag.pdf p.80 para=1 | Annex VII Summary of recommendations Diagnosis and management of asthma Stable a
+2026-06-25 17:32:52 | INFO     | __main__ | [4/29] hybrid | id=12 | What symptoms warrant speculum examination and immediate ref
+2026-06-25 17:32:52 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What symptoms warrant speculum examination and immediate referral versus follow-up for cervical cancer?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.6429 | Medical_document_advance_rag.pdf p.34 para=2 | -palpation, as well as empowering them to seek care promptly in case of any futu
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.5556 | Medical_document_advance_rag.pdf p.25 para=1 | I. Protocols for primary care Who Pen Protocol 4 4.2 Assessment and referral of 
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.5333 | Medical_document_advance_rag.pdf p.51 para=2 | ort any gynaecological sign or symptom suspicious of early cervical cancer (such
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.4500 | Medical_document_advance_rag.pdf p.50 para=1 | Referral of women with suspected cervical cancer What are the signs and symptoms
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.3958 | Medical_document_advance_rag.pdf p.52 para=1 | Figure 3: Assessment and referral of women with suspected cervical cancer at pri
+2026-06-25 17:32:52 | INFO     | __main__ | [5/29] hybrid | id=13 | Why does the Guideline Development Group provide distinct re
+2026-06-25 17:32:52 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: Why does the Guideline Development Group provide distinct recommendations by age group for breast and cervical cancer, a
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.8333 | Medical_document_advance_rag.pdf p.33 para=1 | Guidelines for referral of suspected breast and cervical cancer at primary healt
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.7500 | Medical_document_advance_rag.pdf p.33 para=2 | rations. Women aged 30 years and older have the highest risk of developing breas
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.4333 | Medical_document_advance_rag.pdf p.39 para=5 | that are relevant to consider in a low-resource primary health-care setting.4 Ev
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.3214 | Medical_document_advance_rag.pdf p.44 para=4 | l- oping breast or cervical cancer, whereas these cancer types are comparatively
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.2917 | Medical_document_advance_rag.pdf p.39 para=2 | r is confirmed . The initial scope of the original cancer guidelines, as agreed 
+2026-06-25 17:32:52 | INFO     | __main__ | [6/29] hybrid | id=14 | What is the relationship between the cancer referral guideli
+2026-06-25 17:32:52 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What is the relationship between the cancer referral guidelines and the WHO Comprehensive Cervical Cancer Control guide 
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.8333 | Medical_document_advance_rag.pdf p.37 para=5 | symptoms, signs, and risk factors associated with early diagnosis of breast and 
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.5769 | Medical_document_advance_rag.pdf p.32 para=4 | referral cases. Due to the brief nature of the guidelines, they can be easily an
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.4762 | Medical_document_advance_rag.pdf p.32 para=5 | medium- and long-term. In the case of cervical cancer, the guidelines target the
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.3611 | Medical_document_advance_rag.pdf p.32 para=1 | Executive Summary The Guidelines for referral of suspected breast and cervical c
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.3333 | Medical_document_advance_rag.pdf p.37 para=6 | ntrol — A guide to essential practice (C4GEP). As stated in C4GEP, organized pop
+2026-06-25 17:32:52 | INFO     | __main__ | [7/29] hybrid | id=17 | Why is intravenous aminophylline NOT recommended for routine
+2026-06-25 17:32:52 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: Why is intravenous aminophylline NOT recommended for routine use in asthma exacerbations, and what is the exception?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=1.0000 | Medical_document_advance_rag.pdf p.67 para=1 | Management of asthma and chronic obstructive pulmonary disease in primary health
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.5833 | Medical_document_advance_rag.pdf p.62 para=2 | s of inhaled salbutamol should be administered via a nebulizer or spacer. * (Str
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.5333 | Medical_document_advance_rag.pdf p.64 para=7 | n the basis of the balance between benefits and risks and because the risks outw
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.4167 | Medical_document_advance_rag.pdf p.60 para=3 | nce) REC 6: Intravenous salbutamol: on the basis of the balance between benefits
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.2857 | Medical_document_advance_rag.pdf p.64 para=4 | en is available, it should be administered to all patients with acute severe ast
+2026-06-25 17:32:52 | INFO     | __main__ | [8/29] hybrid | id=18 | What medications are explicitly NOT recommended for stable C
+2026-06-25 17:32:52 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What medications are explicitly NOT recommended for stable COPD management and why?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.5000 | Medical_document_advance_rag.pdf p.5 para=5 | thma 58 Management of exacerbation of asthma 59 Management of stable COPD 60 Man
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.5000 | Medical_document_advance_rag.pdf p.72 para=5 | tobacco or overweight control. Advice regarding these risk factors would be bene
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.4444 | Medical_document_advance_rag.pdf p.65 para=1 | Management of asthma and chronic obstructive pulmonary disease in primary health
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.3860 | Medical_document_advance_rag.pdf p.66 para=1 | Recommendation Benefits/risks; values and acceptability; cost; feasibility Manag
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.3667 | Medical_document_advance_rag.pdf p.61 para=1 | Management of asthma and chronic obstructive pulmonary disease in primary health
+2026-06-25 17:32:52 | INFO     | __main__ | [9/29] hybrid | id=20 | Why is oxygen concentration limited to 24-28% for COPD exace
+2026-06-25 17:32:52 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: Why is oxygen concentration limited to 24-28% for COPD exacerbations but not similarly restricted for asthma?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.7000 | Medical_document_advance_rag.pdf p.66 para=5 | D where available. Administration either by MDI and spacer or by nebulization is
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.5714 | Medical_document_advance_rag.pdf p.66 para=6 | gen is administered it is given in a low concentration (24%–28%) using a control
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.4583 | Medical_document_advance_rag.pdf p.62 para=2 | s of inhaled salbutamol should be administered via a nebulizer or spacer. * (Str
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.4583 | Medical_document_advance_rag.pdf p.5 para=5 | thma 58 Management of exacerbation of asthma 59 Management of stable COPD 60 Man
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.2500 | Medical_document_advance_rag.pdf p.23 para=4 | ere exacerbations, give oral prednisolone 30–40mg for around seven days; ■ give 
+2026-06-25 17:32:52 | INFO     | __main__ | [10/29] hybrid | id=23 | What is the evidence basis for recommending metformin as fir
+2026-06-25 17:32:52 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What is the evidence basis for recommending metformin as first-line therapy, and what are its contraindications?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.5833 | Medical_document_advance_rag.pdf p.102 para=1 | Recommendation 1. Metformin can be used as a first-line oral hypoglycaemic agent
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.5833 | Medical_document_advance_rag.pdf p.103 para=4 | that metformin lowers blood glucose, as measured by HbA1c. The evidence on other
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.5000 | Medical_document_advance_rag.pdf p.104 para=1 | There are fewer trials that compared metformin and sulfonylurea and examined imp
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.3333 | Medical_document_advance_rag.pdf p.109 para=2 | mmended as first-line treatment of hypertension in diabetic patients. They can b
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.3088 | Medical_document_advance_rag.pdf p.101 para=7 | Question: Can metformin be used as first-line oral hypoglycaemic agent in patien
+2026-06-25 17:32:52 | INFO     | __main__ | [11/29] hybrid | id=24 | How do metformin and sulfonylureas compare in terms of glyca
+2026-06-25 17:32:52 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: How do metformin and sulfonylureas compare in terms of glycaemic control, mortality outcomes, and hypoglycaemia risk?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.8333 | Medical_document_advance_rag.pdf p.104 para=1 | There are fewer trials that compared metformin and sulfonylurea and examined imp
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.5714 | Medical_document_advance_rag.pdf p.87 para=5 | lled by diet only and who do not have renal insufficiency, liver disease or hypo
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.4500 | Medical_document_advance_rag.pdf p.103 para=5 | indications to metformin, or in whom metformin does not improve glycaemic contro
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.4167 | Medical_document_advance_rag.pdf p.103 para=4 | that metformin lowers blood glucose, as measured by HbA1c. The evidence on other
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.3333 | Medical_document_advance_rag.pdf p.101 para=2 | caemic control, intentional weight loss) or not available (risk of chronic compl
+2026-06-25 17:32:52 | INFO     | __main__ | [12/29] hybrid | id=26 | What evidence supports giving statins to all diabetic patien
+2026-06-25 17:32:52 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What evidence supports giving statins to all diabetic patients aged 40 and over, and what are the contraindications?
+2026-06-25 17:32:52 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:52 | INFO     | retriever |   [1] score=0.8333 | Medical_document_advance_rag.pdf p.105 para=4 | ly mild adverse events (52). Much of statins’ therapeutic effect is believed to 
+2026-06-25 17:32:52 | INFO     | retriever |   [2] score=0.5909 | Medical_document_advance_rag.pdf p.88 para=1 | ■ Give a statin to all patients with type 2 diabetes aged ≥ 40 years. ■ Quality 
+2026-06-25 17:32:52 | INFO     | retriever |   [3] score=0.5000 | Medical_document_advance_rag.pdf p.106 para=1 | Table 3. Statins used in clinical trials with diabetic patients included in the 
+2026-06-25 17:32:52 | INFO     | retriever |   [4] score=0.3333 | Medical_document_advance_rag.pdf p.106 para=4 | ascular changes. The meta-analysis included large trials that included diabetic 
+2026-06-25 17:32:52 | INFO     | retriever |   [5] score=0.3095 | Medical_document_advance_rag.pdf p.106 para=5 | eported a statistically insignificant reduction (CARDS), while the other reporte
+2026-06-25 17:32:52 | INFO     | __main__ | [13/29] hybrid | id=27 | What specific foot care and retinopathy screening recommenda
+2026-06-25 17:32:52 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What specific foot care and retinopathy screening recommendations exist for diabetic patients?
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=1.0000 | Medical_document_advance_rag.pdf p.111 para=3 | re foot infection and/or foot ulcers should be referred to the next level of car
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.4500 | Medical_document_advance_rag.pdf p.111 para=5 | h of recommendation: conditional This recommendation is based on data from devel
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.4444 | Medical_document_advance_rag.pdf p.88 para=4 | spection, pin-prick sensation) ■ Quality of evidence: low ■ Strength of recommen
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.4167 | Medical_document_advance_rag.pdf p.111 para=4 | ion loss (77). Question: What is the recommended frequency of screening for reti
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.3611 | Medical_document_advance_rag.pdf p.110 para=4 | risk of developing foot ulcers in persons with diabetes is about 15% (74). These
+2026-06-25 17:32:53 | INFO     | __main__ | [14/29] hybrid | id=28 | What are the emergency management protocols for hypoglycaemi
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What are the emergency management protocols for hypoglycaemia and hyperglycaemia in diabetic patients?
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=0.5000 | Medical_document_advance_rag.pdf p.112 para=5 | entially life-threatening (82). The functional brain failure caused by hypogly- 
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.5000 | Medical_document_advance_rag.pdf p.91 para=2 | ntact health services in low-resource settings. It recommends a set of basic int
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.4048 | Medical_document_advance_rag.pdf p.113 para=1 | Diagnosis and management of type 2 diabetes in primary health care in low-resour
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.3333 | Medical_document_advance_rag.pdf p.4 para=2 | Diagnosing diabetes 98 B. Glycaemic control 99 C. Reducing the risk of cardiovas
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.3167 | Medical_document_advance_rag.pdf p.89 para=1 | Diagnosis and management of type 2 diabetes in primary health care in low-resour
+2026-06-25 17:32:53 | INFO     | __main__ | [15/29] hybrid | id=31 | Under what conditions can drug therapy decisions be made bef
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: Under what conditions can drug therapy decisions be made before formally grading cardiovascular risk using the charts?
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=0.8333 | Medical_document_advance_rag.pdf p.117 para=4 | charts (see CD and table 1) enable the estimation of total cardiovascular risk o
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.6667 | Medical_document_advance_rag.pdf p.4 para=3 | source needs 118 What are the goals of implementation? 118 Who needs referral to
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.5833 | Medical_document_advance_rag.pdf p.120 para=1 | Assessing and managing cardiovascular risk in people with risk factors who have 
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.4500 | Medical_document_advance_rag.pdf p.121 para=2 | tools to help identify those at high cardiovascular risk, and to motivate patien
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.3429 | Medical_document_advance_rag.pdf p.117 para=5 | ation using risk charts is not required for making treatment decisions in them. 
+2026-06-25 17:32:53 | INFO     | __main__ | [16/29] hybrid | id=32 | What factors can make the actual cardiovascular risk higher 
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What factors can make the actual cardiovascular risk higher than indicated by the WHO/ISH charts?
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=0.7000 | Medical_document_advance_rag.pdf p.117 para=4 | charts (see CD and table 1) enable the estimation of total cardiovascular risk o
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.6667 | Medical_document_advance_rag.pdf p.120 para=3 | (>160–170/100–105 mmHg) ■ with type 1 or 2 diabetes, with overt nephropathy or o
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.4444 | Medical_document_advance_rag.pdf p.123 para=1 | Prevention of Cardiovascular Disease Table 1. List of WHO/ISH risk prediction ch
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.3333 | Medical_document_advance_rag.pdf p.117 para=3 | scular disease (CeVD) and peripheral vascular disease in two categories of peopl
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.3250 | Medical_document_advance_rag.pdf p.121 para=2 | tools to help identify those at high cardiovascular risk, and to motivate patien
+2026-06-25 17:32:53 | INFO     | __main__ | [17/29] hybrid | id=35 | Why did the guideline development group find it difficult to
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: Why did the guideline development group find it difficult to make strong recommendations either for or against most self
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=0.5476 | Medical_document_advance_rag.pdf p.94 para=6 | y, lack of follow-up interventions at higher levels of health care. Peer review 
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.5000 | Medical_document_advance_rag.pdf p.4 para=5 | s 141 Formulation of recommendations 142 Peer review 143 Declarations of Interes
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.4500 | Medical_document_advance_rag.pdf p.136 para=3 | eflect the diversity of health care systems, their context and be sensitive to t
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.4167 | Medical_document_advance_rag.pdf p.143 para=1 | III. Self-care of cardiovascular disease, diabetes and chronic respiratory disea
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.3333 | Medical_document_advance_rag.pdf p.33 para=1 | Guidelines for referral of suspected breast and cervical cancer at primary healt
+2026-06-25 17:32:53 | INFO     | __main__ | [18/29] hybrid | id=36 | What are the nine self-care research questions addressed by 
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What are the nine self-care research questions addressed by the guideline, and what methodological approach was used?
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=0.5000 | Medical_document_advance_rag.pdf p.143 para=1 | III. Self-care of cardiovascular disease, diabetes and chronic respiratory disea
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.5000 | Medical_document_advance_rag.pdf p.136 para=5 | ase, and maintain health and to cope with illness and disability with or without
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.3333 | Medical_document_advance_rag.pdf p.5 para=1 | Question 2: In patients with non-communicable diseases do lay led self-managemen
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.3333 | Medical_document_advance_rag.pdf p.87 para=2 | r use by health care staff in primary care in low-resource settings, to reduce t
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.2769 | Medical_document_advance_rag.pdf p.136 para=2 | morbidity and increased medical costs.2 Although self-care should not be used to
+2026-06-25 17:32:53 | INFO     | __main__ | [19/29] hybrid | id=38 | What is the definition of self-treatment intervention and ho
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What is the definition of self-treatment intervention and how does it differ from self-monitoring?
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=0.8333 | Medical_document_advance_rag.pdf p.133 para=1 | III. Self-care of cardiovascular disease, diabetes and chronic respiratory disea
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.8333 | Medical_document_advance_rag.pdf p.155 para=1 | III. Self-care of cardiovascular disease, diabetes and chronic respiratory disea
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.3750 | Medical_document_advance_rag.pdf p.157 para=5 | self-monitoring and self-adjustment of treatments, particularly in LMIC. The res
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.3250 | Medical_document_advance_rag.pdf p.135 para=2 | the active components of such programmes and their feasibility in low resource s
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.2667 | Medical_document_advance_rag.pdf p.151 para=6 | or telemonitoring interventions targeted at self-care improve outcomes? Definiti
+2026-06-25 17:32:53 | INFO     | __main__ | [20/29] hybrid | id=41 | What are the five core parameters used in the NCD costing to
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What are the five core parameters used in the NCD costing tool to estimate scale-up costs, and how do they interact?
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=0.5526 | Medical_document_advance_rag.pdf p.177 para=2 | cale-up takes place over time. Box 2 illustrates how these different parameters 
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.5000 | Medical_document_advance_rag.pdf p.204 para=2 | ating costs is shown in the green-shaded column. This column is calculated autom
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.4444 | Medical_document_advance_rag.pdf p.204 para=6 | and human resources), if necessary. The Costing Tool provides the option to sele
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.3750 | Medical_document_advance_rag.pdf p.177 para=3 | ce estimates of total and incremental costs of scaled up provision, broken down 
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.3429 | Medical_document_advance_rag.pdf p.175 para=1 | IV. Scaling up action against noncommunicable diseases: how much will it cost? 2
+2026-06-25 17:32:53 | INFO     | __main__ | [21/29] hybrid | id=42 | What distinguishes a 'best buy' intervention from a 'good bu
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What distinguishes a 'best buy' intervention from a 'good buy' intervention according to the costing methodology?
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=0.5714 | Medical_document_advance_rag.pdf p.179 para=2 | s also feasible, low-cost and appropriate to implement within the constraints of
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.5000 | Medical_document_advance_rag.pdf p.201 para=2 | r, given that implementation coverage of best buy strategies is still very modes
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.3333 | Medical_document_advance_rag.pdf p.191 para=5 | on per annum, ranging from US$2 billion in 2011 to US$ 11.5 billion by 2025 (Fig
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.3333 | Medical_document_advance_rag.pdf p.201 para=1 | IV. Scaling up action against noncommunicable diseases: how much will it cost? c
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.3167 | Medical_document_advance_rag.pdf p.190 para=5 | gure 8). Figure 8. Total estimated cost of scaling up individual-based best buy 
+2026-06-25 17:32:53 | INFO     | __main__ | [22/29] hybrid | id=43 | How many countries were included in the costing analysis, wh
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: How many countries were included in the costing analysis, what was the selection criteria, and how were total costs extr
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=0.5667 | Medical_document_advance_rag.pdf p.180 para=5 | unt for 90% of the NCD burden in developing regions of the world, and 77% of the
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.5000 | Medical_document_advance_rag.pdf p.175 para=3 | y are summarized in Box 1. The purpose is to identify the actual budgetary resou
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.3333 | Medical_document_advance_rag.pdf p.185 para=6 | inflation). Resource-use profiles and unit cost values can be amended by coun- t
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.3333 | Medical_document_advance_rag.pdf p.178 para=3 | ction of interventions for prioritized scale-up Many interventions exist for pre
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.2778 | Medical_document_advance_rag.pdf p.185 para=4 | w.who.int/choice/costs), which contains country-specific estimates for primary c
+2026-06-25 17:32:53 | INFO     | __main__ | [23/29] hybrid | id=44 | What default coverage rates were assumed for current and tar
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What default coverage rates were assumed for current and target intervention coverage in the costing model?
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=0.8333 | Medical_document_advance_rag.pdf p.181 para=3 | -dose) coverage (WHO, 2010b). In 33 of the 42 countries in this study, coverage 
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.6429 | Medical_document_advance_rag.pdf p.181 para=1 | IV. Scaling up action against noncommunicable diseases: how much will it cost? C
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.5333 | Medical_document_advance_rag.pdf p.204 para=6 | and human resources), if necessary. The Costing Tool provides the option to sele
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.3750 | Medical_document_advance_rag.pdf p.176 para=4 | tion A 20% rate of prevalence of smoking in an adult population of one million w
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.3409 | Medical_document_advance_rag.pdf p.176 para=5 | 0 000 times US$1 times 10%); once scaled up to a higher desired level of coverag
+2026-06-25 17:32:53 | INFO     | __main__ | [24/29] hybrid | id=46 | What methodology was used across the different guideline sec
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What methodology was used across the different guideline sections and how was evidence quality assessed?
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=0.5500 | Medical_document_advance_rag.pdf p.87 para=2 | r use by health care staff in primary care in low-resource settings, to reduce t
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.5000 | Medical_document_advance_rag.pdf p.142 para=1 | Formulation of recommendations The Guideline Development Group (Appendix 3) met 
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.4167 | Medical_document_advance_rag.pdf p.140 para=1 | All reviews relevant to each of the nine questions were summarised for each of t
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.3929 | Medical_document_advance_rag.pdf p.137 para=4 | uent management decisions. The target audience for this guideline are health car
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.3922 | Medical_document_advance_rag.pdf p.69 para=4 | e guideline expert panel meeting, the members were asked to identify critical cl
+2026-06-25 17:32:53 | INFO     | __main__ | [25/29] hybrid | id=47 | What measurements should all people aged 40+ years have acco
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What measurements should all people aged 40+ years have according to the diabetes guideline development group?
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=1.0000 | Medical_document_advance_rag.pdf p.98 para=1 | Recommendations and evidence A. Diagnosing diabetes Diabetes is diagnosed by lab
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.5000 | Medical_document_advance_rag.pdf p.17 para=4 | ■ Risk charts underestimate the risk in 60 etc., for people age < 40 years selec
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.3500 | Medical_document_advance_rag.pdf p.6 para=2 | , Search strategies, References, Members of the Guideline Development Group 3. D
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.3333 | Medical_document_advance_rag.pdf p.33 para=1 | Guidelines for referral of suspected breast and cervical cancer at primary healt
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.2500 | Medical_document_advance_rag.pdf p.106 para=5 | eported a statistically insignificant reduction (CARDS), while the other reporte
+2026-06-25 17:32:53 | INFO     | __main__ | [26/29] hybrid | id=48 | What specific complications does WHO PEN aim to prevent thro
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What specific complications does WHO PEN aim to prevent through its integrated NCD management approach?
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=0.5000 | Medical_document_advance_rag.pdf p.96 para=2 | use of the management protocols will be conducted in every low-income country th
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.5000 | Medical_document_advance_rag.pdf p.8 para=2 | th systems. WHO PEN is the minimum standard for NCDs to strengthen national capa
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.3333 | Medical_document_advance_rag.pdf p.5 para=1 | Contents Introduction 7 I. Protocols for primary care 13 Who Pen Protocol 1 14 P
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.3333 | Medical_document_advance_rag.pdf p.8 para=1 | and the user-friendly nature of the tools that are been developed, will empower 
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.3269 | Medical_document_advance_rag.pdf p.204 para=5 | of the WHO Package of Essential NCD Interventions (WHO PEN) (for primary care in
+2026-06-25 17:32:53 | INFO     | __main__ | [27/29] hybrid | id=49 | What are the key distinctions between financial and economic
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What are the key distinctions between financial and economic costing, and total versus incremental costing in the NCD co
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=0.6667 | Medical_document_advance_rag.pdf p.175 para=5 | d. Total versus incremental costing: The total cost for a given year is calculat
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.6667 | Medical_document_advance_rag.pdf p.175 para=3 | y are summarized in Box 1. The purpose is to identify the actual budgetary resou
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.6429 | Medical_document_advance_rag.pdf p.175 para=4 | g principles Financial versus economic costing: Costs reflect actual expendi- tu
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.2976 | Medical_document_advance_rag.pdf p.177 para=3 | ce estimates of total and incremental costs of scaled up provision, broken down 
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.2500 | Medical_document_advance_rag.pdf p.204 para=6 | and human resources), if necessary. The Costing Tool provides the option to sele
+2026-06-25 17:32:53 | INFO     | __main__ | [28/29] hybrid | id=50 | What evidence exists for the glycaemic control threshold and
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: What evidence exists for the glycaemic control threshold and its relationship to microvascular complications?
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=0.8333 | Medical_document_advance_rag.pdf p.99 para=4 | for the evidence was not produced. The rec- ommendation is based on studies of a
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.7500 | Medical_document_advance_rag.pdf p.100 para=1 | Complications Trial (DCCT) has shown that better glycaemic control reduces the r
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.5833 | Medical_document_advance_rag.pdf p.101 para=5 | to be feasible in areas of low literacy and basic health services. Diabetes is a
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.3667 | Medical_document_advance_rag.pdf p.101 para=2 | caemic control, intentional weight loss) or not available (risk of chronic compl
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.2095 | Medical_document_advance_rag.pdf p.99 para=6 | sk (9% reduction). This is supported by the follow-up of the UKPDS participants 
+2026-06-25 17:32:53 | INFO     | __main__ | [29/29] hybrid | id=51 | A 45-year-old heavy smoker presents at a primary care clinic
+2026-06-25 17:32:53 | INFO     | retriever | Searching (hybrid) | top_k=5 | query: A 45-year-old heavy smoker presents at a primary care clinic with persistent cough, worsening breathlessness, a blood pr
+2026-06-25 17:32:53 | INFO     | httpx | HTTP Request: POST http://localhost:6333/collections/advanced_rag/points/query "HTTP/1.1 200 OK"
+2026-06-25 17:32:53 | INFO     | retriever |   [1] score=0.6667 | Medical_document_advance_rag.pdf p.121 para=5 | test is positive a confirmatory blood glucose test need to be arranged to diagno
+2026-06-25 17:32:53 | INFO     | retriever |   [2] score=0.5000 | Medical_document_advance_rag.pdf p.19 para=1 | I. Protocols for primary care Reinforce message that Do you use A1: ASK NO tobac
+2026-06-25 17:32:53 | INFO     | retriever |   [3] score=0.3333 | Medical_document_advance_rag.pdf p.20 para=1 | Who Pen Protocol 3 3.1 Management of Asthma 3.2 Management of Chronic obstructiv
+2026-06-25 17:32:53 | INFO     | retriever |   [4] score=0.3333 | Medical_document_advance_rag.pdf p.121 para=3 | limitations, the mean cholesterol value for the population can be used. ■ Before
+2026-06-25 17:32:53 | INFO     | retriever |   [5] score=0.2556 | Medical_document_advance_rag.pdf p.17 para=1 | I. Protocols for primary care 15 TISIV TSRIF Action 2. Assess (physical exam and
